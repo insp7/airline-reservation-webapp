@@ -1,7 +1,7 @@
-# AirlinesReservationApp
-Airline Reservation is a web application which provides a user-friendly User Interface and an easy efficient way to search, book and cancel flight tickets. This application is currently working for a single airline company and only for domestic flights.
+Airlines Reservation System
+---------------------------
 
-### Functionalities:
+# Functionalities:
 
 1. User registration & Authentication.
 2. User can search for flights.
@@ -13,3 +13,17 @@ Airline Reservation is a web application which provides a user-friendly User Int
 8. Admin can add or delete a flight.
 9. Logging for each issuance/cancellation of tickets should be made in the system.
 10. Payment.
+
+# Database design:
+
+users(id, title, first_name, last_name, email, password, date_of_birth, contact_no, is_admin, created_at, updated_at);
+flights(flight_number, source, destination, departure_date, estimated_time_of_arrival, return_date, passenger_capacity, cabins_available, fare, created_at, updated_at, is_deleted);
+reservations(pnr, user_id, flight_number, cabin_class, created_at, is_cancelled); 
+seats(id, pnr, seat_number)
+
+
+# DOUBTS: 
+
+1. meaning of title attribute? 
+2. can there exist more than one admin (assuming one admin for now)
+3. is passenger capacity constant(60) for every flight ? (assuming 60 capacity)
