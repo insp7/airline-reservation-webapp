@@ -16,14 +16,25 @@ Airlines Reservation System
 
 # Database design:
 
-users(id, title, first_name, last_name, email, password, date_of_birth, contact_no, is_admin, created_at, updated_at);
-flights(flight_number, source, destination, departure_date, estimated_time_of_arrival, return_date, passenger_capacity, cabins_available, fare, created_at, updated_at, is_deleted);
-reservations(pnr, user_id, flight_number, cabin_class, created_at, is_cancelled); 
-seats(id, pnr, seat_number)
-
+users(id, first_name, last_name, email, password, gender, date_of_birth, contact_no, is_admin, created_at, updated_at);
+flights(flight_number, source, destination, departure_date, arrival_date, passenger_capacity, created_at, updated_at, is_deleted);
+fares(flight_number, cabin_class, passenger_type, fare) NOTE: passenger_types => [I: 'Infant', C: 'Child', A: 'Adult']
+reservations(pnr, user_id, flight_number, cabin_class, total_fare, created_at, is_cancelled); 
+passengers(pnr, first_name, last_name, gender, date_of_birth, seat_number, passenger_type) NOTE: add validation check for date_of_birth
+booked_seats(flight_number, seat_number)
 
 # DOUBTS: 
 
-1. meaning of title attribute? 
+1. meaning of title attribute? (Removed title attribute as of now)
 2. can there exist more than one admin (assuming one admin for now)
 3. is passenger capacity constant(60) for every flight ? (assuming 60 capacity)
+
+# NOTES:
+
+1. Removed 'return_date' column from flights relation, because that functionality can be implemented on service layer.
+2. Added 'passengers_count' in reservations relation.
+
+# DERIVED ATTRIBUTES:
+
+1. total_passengers_count(not stored in DB, since coming from passengers table for same pnr)
+2. total_fare(stored in DB, even tho can be calculated using joins)
