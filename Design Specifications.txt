@@ -17,11 +17,12 @@ Airlines Reservation System
 # Database design:
 
 users(id, first_name, last_name, email, password, gender, date_of_birth, contact_no, is_admin, created_at, updated_at);
-flights(flight_number, source, destination, departure_date, arrival_date, passenger_capacity, created_at, updated_at, is_deleted);
-fares(flight_number, cabin_class, passenger_type, fare) NOTE: passenger_types => [I: 'Infant', C: 'Child', A: 'Adult']
-reservations(pnr, user_id, flight_number, cabin_class, total_fare, created_at, is_cancelled); 
-passengers(pnr, first_name, last_name, gender, date_of_birth, seat_number, passenger_type) NOTE: add validation check for date_of_birth
-booked_seats(flight_number, seat_number)
+airport(code, name, city, state);
+flights(flight_no, source, destination, departure_date, arrival_date, capacity, created_at, updated_at, is_deleted);
+fares(source, destination, cabin_class, passenger_type, fare); NOTE: passenger_types => [I: 'Infant', C: 'Child', A: 'Adult']
+reservations(pnr, user_id, flight_no, cabin_class, total_fare, created_at, is_cancelled); 
+passengers(pnr, seat_no, first_name, last_name, gender, date_of_birth, passenger_type); NOTE: add validation check for date_of_birth
+booked_seats(flight_no, seat_no);
 
 # DOUBTS: 
 
@@ -38,3 +39,4 @@ booked_seats(flight_number, seat_number)
 
 1. total_passengers_count(not stored in DB, since coming from passengers table for same pnr)
 2. total_fare(stored in DB, even tho can be calculated using joins)
+
