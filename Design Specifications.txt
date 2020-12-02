@@ -1,7 +1,7 @@
 Airlines Reservation System
 ---------------------------
 
-# Functionalities:
+# FUNCTIONALITIES:
 
 1. User registration & Authentication.
 2. User can search for flights.
@@ -14,29 +14,69 @@ Airlines Reservation System
 9. Logging for each issuance/cancellation of tickets should be made in the system.
 10. Payment.
 
-# Database design:
+# DATABASE DESIGN:
 
 users(id, first_name, last_name, email, password, gender, date_of_birth, contact_no, is_admin, created_at, updated_at);
-airport(code, name, city, state);
-flights(flight_no, source, destination, departure_date, arrival_date, capacity, created_at, updated_at, is_deleted);
-fares(source, destination, cabin_class, passenger_type, fare); NOTE: passenger_types => [I: 'Infant', C: 'Child', A: 'Adult']
+airports(code, name, city, state);
+flights(flight_no, source, destination, departure_date, arrival_date, cabin_class, capacity, fare, created_at, updated_at, is_deleted);
 reservations(pnr, user_id, flight_no, cabin_class, total_fare, created_at, is_cancelled); 
 passengers(pnr, seat_no, first_name, last_name, gender, date_of_birth, passenger_type); NOTE: add validation check for date_of_birth
 booked_seats(flight_no, seat_no);
 
-# DOUBTS: 
+# ASSUMPTIONS: 
 
-1. meaning of title attribute? (Removed title attribute as of now)
-2. can there exist more than one admin (assuming one admin for now)
-3. is passenger capacity constant(60) for every flight ? (assuming 60 capacity)
+1. Removed title attribute as of now since don't know its meaning.
+2. Only one admin exists for now.
+3. 60 seats per flight.
 
-# NOTES:
+# FLOW OF USECASES:
 
-1. Removed 'return_date' column from flights relation, because that functionality can be implemented on service layer.
-2. Added 'passengers_count' in reservations relation.
+A. HOW USER BOOKS A FLIGHT:
 
-# DERIVED ATTRIBUTES:
+1) User shall enter the flight details such as source, destination, departure date, return date(if round trip), number of passengers(excluding user himself), cabin class and click search. Following are the query/queries:
 
-1. total_passengers_count(not stored in DB, since coming from passengers table for same pnr)
-2. total_fare(stored in DB, even tho can be calculated using joins)
+SELECT flight_no, source, destination, departure_date, arrival_date, cabin_class, capacity, fare 
+FROM flights 
+WHERE source = :source AND destination = :destination AND departure_date = :departure_date AND capacity >= :number_of_passengers AND cabin_class = :cabin_class;
+if(return_date is set) {
+	SELECT flight_no, source, destination, departure_date, arrival_date, cabin_class, capacity, fare 
+	FROM flights 
+	WHERE source = :destination AND destination = :source AND departure_date = :return_date AND capacity >= :number_of_passengers AND cabin_class = :cabin_class;
+}
 
+2) The result of the above query(s) is returned to the user. The user selects a desired flight from the list of available flights. And is asked to select seats from the list of available seats(shown on the ui).
+NOTE: before showing available seats, lock the unavailable/booked ones, so that a user cannot book an already booked seat. Query for the following:
+SELECT * FROM booked_seats WHERE flight_no = :flight_no;
+The result of the following query is all the booked seats for a flight specified by the flight_no.
+Then on the UI, disable all such seats, allowing user to only select those which are not booked i.e available.
+
+3) User will then fillout the individual passenger details(including passenger_type).
+Then generate the total fare which is calculated as follows:
+
+// assume fare of flight is 100
+fare of flight = 100
+total_fare = 0
+for (all passengers) {
+	if(passenger is infant) {
+		20% discount on that seat
+		fare of flight = fare of flight - (fare of flight x 0.2)
+	}
+	else if(passenger is child) 
+		discount of 15% on that seat
+		fare of flight = fare of flight - (fare of flight x 0.15)
+	else
+		no discount on that seat
+	total_fare = fare of flight + total_fare
+}
+
+4) Now total fare is also calculated, and after payment, the user shall have made a successful reservation. Following queries shall be fired: 
+TRANSACTION START
+INSERT INTO reservations(pnr[auto_generated], user_id, flight_no, cabin_class, total_fare, created_at, is_cancelled) 
+VALUES(:pnr[auto_generated], :user_id, :flight_no, :cabin_class, :total_fare, :created_at, :is_cancelled)
+for (all passengers) {
+	INSERT INTO booked_seats(flight_no, seat_no) VALUES(:flight_no, :seat_no)	
+	INSERT INTO passengers(pnr[represents the currently inserted pnr in reservations table], seat_no, first_name, last_name, gender, date_of_birth, passenger_type) VALUES(:pnr[represents the currently inserted pnr in reservations table], :seat_no, :first_name, :last_name, :gender, :date_of_birth, :passenger_type)
+}
+TRANSACTION END
+
+5) User has successfully booked a flight.
