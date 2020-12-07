@@ -1,19 +1,7 @@
-package models;
+package com.airlinesReservationRESTApp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+public class User {
 
-@Entity
-@Table(name = "users")
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String firstName;
     private String lastName;
@@ -22,11 +10,11 @@ public class User implements Serializable {
     private String gender;
     private String dateOfBirth;
     private String contactNo;
-    private boolean isAdmin;
+    private int isAdmin;
 
     public User() { }
 
-    public User(long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String contactNo, boolean isAdmin) {
+    public User(long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String contactNo, int isAdmin) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -102,12 +90,12 @@ public class User implements Serializable {
         this.contactNo = contactNo;
     }
 
-    public boolean isAdmin() {
+    public int getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override

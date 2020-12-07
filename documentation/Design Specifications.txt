@@ -1,0 +1,35 @@
+Airlines Reservation System
+---------------------------
+
+# FUNCTIONALITIES:
+
+1. User registration & Authentication.
+2. User can search for flights.
+3. User can check for the availability of tickets of a flight, flight schedule.
+4. User can book a ticket for a particular flight of any class. (receipt generated)
+5. User can see details for the booked flight by entering booking number/Passenger name record(PNR, which is a code of 6 alphanumeric characters)
+6. User can cancel booked ticket for a particular flight before 3 hours from the departure of flight.
+7. After cancellation of a ticket, system also calculates the amount to be return to the user after deductions.
+8. Admin can add or delete a flight.
+9. Logging for each issuance/cancellation of tickets should be made in the system.
+10. Payment.
+
+# DATABASE DESIGN:
+
+users(id, first_name, last_name, email, password, gender, date_of_birth, contact_no, is_admin);
+airports(id, name, city, state);
+flights(id, source, destination, departure_date, arrival_date, cabin_class, capacity, fare);
+reservations(id, user_id, flight_id, cabin_class, total_fare, created_at, is_cancelled); 
+passengers(reservation_id, seat_no, first_name, last_name, gender, date_of_birth, passenger_type);
+
+# QUERIES: 
+
+1. Fetch available flights as per user's requirements
+
+SELECT * FROM flights WHERE source = :source AND destination = :destination AND departure_date LIKE ':date-string%' AND cabin_class = :cabin_class AND capacity > :capacity;
+Ex.
+SELECT * FROM flights WHERE flights.source = 1 AND flights.destination = 2 AND flights.departure_date LIKE '2020-12-15%' AND flights.cabin_class = 1 AND flights.capacity > 4;
+
+# PROJECT SETTINGS:
+
+URL = http://localhost:8080/airlinesReservationRESTApp_war_exploded/

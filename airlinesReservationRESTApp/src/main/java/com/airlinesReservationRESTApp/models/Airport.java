@@ -1,39 +1,27 @@
-package models;
+package com.airlinesReservationRESTApp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+public class Airport {
 
-@Entity
-@Table(name = "airports")
-public class Airport implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long code;
+    private long id;
     private String name;
     private String city;
     private String state;
 
     Airport() { }
 
-    public Airport(long code, String name, String city, String state) {
-        this.code = code;
+    public Airport(long id, String name, String city, String state) {
+        this.id = id;
         this.name = name;
         this.city = city;
         this.state = state;
     }
 
-    public long getCode() {
-        return code;
+    public long getId() {
+        return id;
     }
 
-    public void setCode(long code) {
-        this.code = code;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -67,18 +55,18 @@ public class Airport implements Serializable {
 
         Airport airport = (Airport) o;
 
-        return code == airport.code;
+        return id == airport.id;
     }
 
     @Override
     public int hashCode() {
-        return (int) (code ^ (code >>> 32));
+        return (int) (id ^ (id >>> 32));
     }
 
     @Override
     public String toString() {
         return "Airport{" +
-                "code=" + code +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
