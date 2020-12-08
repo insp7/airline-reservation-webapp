@@ -1,8 +1,17 @@
 package com.airlinesReservationRESTApp.models;
 
-public class Flight {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
 
-    private long id;
+@Entity
+@Table(name = "flights")
+public class Flight implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    private Long id;
     private long source;
     private long destination;
     private String departureDate;
