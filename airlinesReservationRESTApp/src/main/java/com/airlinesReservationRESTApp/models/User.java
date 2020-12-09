@@ -1,8 +1,6 @@
 package com.airlinesReservationRESTApp.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -116,7 +114,7 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        return id == user.id;
+        return id.equals(user.id);
     }
 
     @Override
@@ -139,3 +137,4 @@ public class User implements Serializable {
                 '}';
     }
 }
+

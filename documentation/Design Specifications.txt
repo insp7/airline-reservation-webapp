@@ -22,16 +22,6 @@ flights(id, source, destination, departure_date, arrival_date, cabin_class, capa
 reservations(id, user_id, flight_id, cabin_class, total_fare, created_at, is_cancelled); 
 passengers(reservation_id, seat_no, first_name, last_name, gender, date_of_birth, passenger_type);
 
-# QUERIES: 
-
-1. Fetch available flights as per user's requirements
-SELECT * FROM flights WHERE source = :source AND destination = :destination AND departure_date LIKE ':date-string%' AND cabin_class = :cabin_class AND capacity > :capacity;
-Ex.
-SELECT * FROM flights WHERE flights.source = 1 AND flights.destination = 2 AND flights.departure_date LIKE '2020-12-15%' AND flights.cabin_class = 1 AND flights.capacity > 4;
-
-2. Query to create users table
-CREATE TABLE users(id NUMBER(11) PRIMARY KEY, firstName VARCHAR2(100), lastName VARCHAR2(100), email VARCHAR2(100), password VARCHAR2(100), gender VARCHAR2(1), dateOfBirth VARCHAR2(30), contactNo VARCHAR2(10), isAdmin NUMBER(1));
-
 # PROJECT SETTINGS:
 
 URL = http://localhost:8080/airlinesReservationRESTApp_war_exploded/
