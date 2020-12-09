@@ -1,2 +1,8 @@
-airlinesReservationRESTApp/.ideas/
-airlinesReservationRESTApp/target/
+airlinesReservationRESTApp/bin
+airlinesReservationRESTApp/target
+airlinesReservationRESTApp/.classpath
+airlinesReservationRESTApp/.project
+airlinesReservationRESTApp/.settings
+airlinesReservationRESTApp/src/main/webapp/META-INF
+airlinesReservationRESTApp/.idea
+airlinesReservationRESTApp/*.iml

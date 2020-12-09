@@ -1,8 +1,7 @@
 package com.airlinesReservationRESTApp.api;
 
-import com.airlinesReservationRESTApp.models.User;
+import java.util.List;
 
-import com.airlinesReservationRESTApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import com.airlinesReservationRESTApp.models.Reservation;
+import com.airlinesReservationRESTApp.services.ReservationService;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/reservations")
 @CrossOrigin
-public class UserController {
+public class ReservationController {
 
-    @Autowired
-    private UserService userService;
-
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> getAll() {
-        return userService.getUsers();
+	@Autowired
+    private ReservationService reservationService;
+	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Reservation> getAll() {
+        return reservationService.getReservations();
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User getUser(@PathVariable Long id) {
-        return userService.getUser(id);
+    public Reservation getReservation(@PathVariable Long id) {
+        return reservationService.getReservation(id);
     }
 
     @PostMapping
-    public void post(@RequestBody User user) {
-        userService.addUser(user);
+    public void post(@RequestBody Reservation reservation) {
+    	reservationService.addReservation(reservation);
     }
 
-    @PutMapping
-    public void update(@RequestBody User updatedUser) {
-        userService.updateUser(updatedUser);
+    @PutMapping(path = "/{id}")
+    public void update(@PathVariable Long id, @RequestBody Reservation updatedReservation) {
+    	reservationService.updateReservation(updatedReservation);
     }
 
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
-        userService.deleteUser(id);
+    	reservationService.deleteReservation(id);
     }
 }
