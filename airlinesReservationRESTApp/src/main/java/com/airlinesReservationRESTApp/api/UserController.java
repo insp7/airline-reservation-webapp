@@ -1,6 +1,7 @@
 package com.airlinesReservationRESTApp.api;
 
 import com.airlinesReservationRESTApp.models.User;
+
 import com.airlinesReservationRESTApp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

@@ -35,3 +35,20 @@ CREATE TABLE users(id NUMBER(11) PRIMARY KEY, firstName VARCHAR2(100), lastName 
 # PROJECT SETTINGS:
 
 URL = http://localhost:8080/airlinesReservationRESTApp_war_exploded/
+
+# USER END POINTS
+
+GET http://localhost:8080/airlinesReservationRESTApp/users 
+GET http://localhost:8080/airlinesReservationRESTApp/users/{id}
+POST http://localhost:8080/airlinesReservationRESTApp/users
+PUT http://localhost:8080/airlinesReservationRESTApp/users/{id}
+DELETE http://localhost:8080/airlinesReservationRESTApp/users/{id}
+
+CREATE TABLE flights(id NUMBER(11), source NUMBER(11), destination NUMBER(11), departureDate VARCHAR2(50), arrivalDate VARCHAR2(50), capacity NUMBER(2), cabinClass NUMBER(1), fare NUMBER(11));
+
+# Query to create tables
+CREATE TABLE users(id NUMBER(11) PRIMARY KEY, firstName VARCHAR2(100), lastName VARCHAR2(100), email VARCHAR2(100), password VARCHAR2(100), gender VARCHAR2(1), dateOfBirth VARCHAR2(30), contactNo VARCHAR2(10), isAdmin NUMBER(1));
+CREATE TABLE flights(id NUMBER(11), source NUMBER(11), destination NUMBER(11), departureDate VARCHAR2(50), arrivalDate VARCHAR2(50), capacity NUMBER(2), cabinClass NUMBER(1), fare NUMBER(11));
+CREATE TABLE airports(id NUMBER(11), name VARCHAR2(100), city VARCHAR2(100), state VARCHAR2(100));
+
+{"id":7,"firstName":"ABCUpdated","lastName":"XYZUpdated","email":"abc@gmail.comUpdated","password":"abcUpdated","gender":"M","dateOfBirth":"11-APR-2002","contactNo":"1234567890","isAdmin":0}

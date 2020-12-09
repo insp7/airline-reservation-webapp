@@ -12,6 +12,7 @@ public class Flight implements Serializable {
 
     @Id
     private Long id;
+    
     private long source;
     private long destination;
     private String departureDate;
