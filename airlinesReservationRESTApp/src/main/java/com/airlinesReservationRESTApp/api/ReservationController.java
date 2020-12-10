@@ -22,9 +22,12 @@ import com.airlinesReservationRESTApp.services.ReservationService;
 @RequestMapping("/reservations")
 @CrossOrigin
 public class ReservationController {
+    private final ReservationService reservationService;
 
-	@Autowired
-    private ReservationService reservationService;
+    @Autowired
+	public ReservationController(ReservationService reservationService) {
+        this.reservationService = reservationService;
+    }
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Reservation> getAll() {
@@ -41,8 +44,8 @@ public class ReservationController {
     	reservationService.addReservation(reservation);
     }
 
-    @PutMapping(path = "/{id}")
-    public void update(@PathVariable Long id, @RequestBody Reservation updatedReservation) {
+    @PutMapping
+    public void update(@RequestBody Reservation updatedReservation) {
     	reservationService.updateReservation(updatedReservation);
     }
 

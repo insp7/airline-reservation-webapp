@@ -20,7 +20,7 @@ public class Flight implements Serializable {
     private int cabinClass;
     private int fare;
 
-    Flight() { }
+    public Flight() { }
 
     public Flight(long id, long source, long destination, String departureDate, String arrivalDate, int capacity, int cabinClass, int fare) {
         this.id = id;

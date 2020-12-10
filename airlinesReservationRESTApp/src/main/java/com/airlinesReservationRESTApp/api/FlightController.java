@@ -22,32 +22,35 @@ import com.airlinesReservationRESTApp.services.FlightService;
 @RequestMapping("/flights")
 @CrossOrigin
 public class FlightController {
+	private final FlightService flightService;
 
-	 	@Autowired
-	 	private FlightService flightService;
-	 
-	 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	    public List<Flight> getAll() {
-	        return flightService.getFlights();
-	    }
+	@Autowired
+	public FlightController(FlightService flightService) {
+		this.flightService = flightService;
+	}
 
-	    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	    public Flight getFlight(@PathVariable Long id) {
-	        return flightService.getFlight(id);
-	    }
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> getAll() {
+		return flightService.getFlights();
+	}
 
-	    @PostMapping
-	    public void post(@RequestBody Flight flight) {
-	        flightService.addFlight(flight);
-	    }
+	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Flight getFlight(@PathVariable Long id) {
+		return flightService.getFlight(id);
+	}
 
-	    @PutMapping(path = "/{id}")
-	    public void update(@PathVariable Long id, @RequestBody Flight updatedFlight) {
-	        flightService.updateFlight(updatedFlight);
-	    }
+	@PostMapping
+	public void post(@RequestBody Flight flight) {
+		flightService.addFlight(flight);
+	}
 
-	    @DeleteMapping(path = "/{id}")
-	    public void delete(@PathVariable Long id) {
-	        flightService.deleteFlight(id);
-	    }
+	@PutMapping
+	public void update(@RequestBody Flight updatedFlight) {
+		flightService.updateFlight(updatedFlight);
+	}
+
+	@DeleteMapping(path = "/{id}")
+	public void delete(@PathVariable Long id) {
+		flightService.deleteFlight(id);
+	}
 }

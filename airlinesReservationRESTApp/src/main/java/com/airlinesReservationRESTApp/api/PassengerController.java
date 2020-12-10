@@ -21,9 +21,12 @@ import java.util.List;
 @RequestMapping("/passengers")
 @CrossOrigin
 public class PassengerController {
+    private final PassengerService passengerService;
 
     @Autowired
-    private PassengerService passengerService;
+    public PassengerController(PassengerService passengerService) {
+        this.passengerService = passengerService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Passenger> getAll() {

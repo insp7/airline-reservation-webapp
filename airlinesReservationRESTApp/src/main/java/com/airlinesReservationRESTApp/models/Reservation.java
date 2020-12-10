@@ -21,7 +21,7 @@ public class Reservation implements Serializable {
 	private int returnedAmount;
 	private String createdAt;
 	
-	Reservation() { }
+	public Reservation() { }
 	
 	public Reservation(long id, long userId, long flightId, String cabinClass, int isCancelled, int totalFare, int returnedAmount, String createdAt) {
 		this.id = id;

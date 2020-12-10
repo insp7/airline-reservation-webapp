@@ -22,9 +22,11 @@ import java.util.List;
 @RequestMapping("/users")
 @CrossOrigin
 public class UserController {
+    private final UserService userService;
 
-    @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<User> getAll() {
