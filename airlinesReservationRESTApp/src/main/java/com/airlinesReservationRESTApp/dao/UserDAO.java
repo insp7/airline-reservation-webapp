@@ -13,9 +13,12 @@ import java.util.Optional;
 
 @Repository
 public class UserDAO {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public UserDAO(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public void saveUser(User user) {
         if(userRepository.existsById(user.getId()))

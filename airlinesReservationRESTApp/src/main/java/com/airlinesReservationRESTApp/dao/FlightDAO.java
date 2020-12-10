@@ -11,9 +11,12 @@ import com.airlinesReservationRESTApp.models.Flight;
 
 @Repository
 public class FlightDAO {
-	
-	@Autowired
-    private FlightRepository flightRepository;
+    private final FlightRepository flightRepository;
+
+    @Autowired
+    public FlightDAO(FlightRepository flightRepository) {
+		this.flightRepository = flightRepository;
+	}
 
 	public void saveFlight(Flight flight) {
 		 if(flightRepository.existsById(flight.getId()))

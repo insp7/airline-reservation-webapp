@@ -10,8 +10,12 @@ import java.util.Optional;
 
 @Repository
 public class PassengerDAO {
+    private final PassengerRepository passengerRepository;
+
     @Autowired
-    PassengerRepository passengerRepository;
+    public PassengerDAO(PassengerRepository passengerRepository) {
+        this.passengerRepository = passengerRepository;
+    }
 
     public Passenger getPassenger(Long id) {
         Optional<Passenger> passengerOptional = passengerRepository.findById(id);

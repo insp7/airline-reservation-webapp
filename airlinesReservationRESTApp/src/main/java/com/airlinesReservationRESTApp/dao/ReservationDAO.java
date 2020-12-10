@@ -11,9 +11,12 @@ import com.airlinesReservationRESTApp.models.Reservation;
 
 @Repository
 public class ReservationDAO {
+    private final ReservationRepository reservationRepository;
 
-	@Autowired
-    private ReservationRepository reservationRepository;
+    @Autowired
+    public ReservationDAO(ReservationRepository reservationRepository) {
+        this.reservationRepository = reservationRepository;
+    }
 
     public void saveReservation(Reservation reservation) {
         if(reservationRepository.existsById(reservation.getId()))

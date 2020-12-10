@@ -10,9 +10,12 @@ import com.airlinesReservationRESTApp.models.Flight;
 
 @Service
 public class FlightService {
+	private final FlightDAO flightDAO;
 
 	@Autowired
-	private FlightDAO flightDAO;
+	public FlightService(FlightDAO flightDAO) {
+		this.flightDAO = flightDAO;
+	}
 	 
 	public List<Flight> getFlights() {
 		return flightDAO.getFlights();

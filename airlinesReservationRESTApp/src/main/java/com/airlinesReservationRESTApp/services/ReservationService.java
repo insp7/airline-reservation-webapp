@@ -10,9 +10,12 @@ import com.airlinesReservationRESTApp.models.Reservation;
 
 @Service
 public class ReservationService {
+    private final ReservationDAO reservationDAO;
 
-	@Autowired
-    private ReservationDAO reservationDAO;
+    @Autowired
+    public ReservationService(ReservationDAO reservationDAO) {
+        this.reservationDAO = reservationDAO;
+    }
 
 	public void addReservation(Reservation reservation) {
 		reservationDAO.saveReservation(reservation);

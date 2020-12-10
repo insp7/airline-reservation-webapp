@@ -9,9 +9,12 @@ import java.util.List;
 
 @Service
 public class PassengerService {
+    private final PassengerDAO passengerDAO;
 
     @Autowired
-    private PassengerDAO passengerDAO;
+    public PassengerService(PassengerDAO passengerDAO) {
+        this.passengerDAO = passengerDAO;
+    }
 
     public List<Passenger> getPassengers() {
         return passengerDAO.getPassengers();
