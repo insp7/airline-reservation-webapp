@@ -3,6 +3,7 @@ package com.airlinesReservationRESTApp.services;
 import com.airlinesReservationRESTApp.dao.UserDAO;
 
 
+import com.airlinesReservationRESTApp.models.AuthenticationDetail;
 import com.airlinesReservationRESTApp.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,9 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userDAO.deleteUser(id);
+    }
+
+    public String authenticateUser(AuthenticationDetail userDetails) {
+        return userDAO.authenticateUser(userDetails);
     }
 }

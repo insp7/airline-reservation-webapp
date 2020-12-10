@@ -2,6 +2,7 @@ package com.airlinesReservationRESTApp.api;
 
 import java.util.List;
 
+import com.airlinesReservationRESTApp.models.FlightPreference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -52,5 +53,15 @@ public class FlightController {
 	@DeleteMapping(path = "/{id}")
 	public void delete(@PathVariable Long id) {
 		flightService.deleteFlight(id);
+	}
+
+	@GetMapping(path = "/search")
+	public String getFlightsbyUserPreference(@RequestBody FlightPreference flightPreference) {
+		return flightService.getFlightsByUserPreference(flightPreference);
+	}
+
+	@GetMapping(path = "/reserved-seats/{id}")
+	public String getReservedSeats(@PathVariable Long id) {
+		return flightService.getReservedSeatsByFlightId(id);
 	}
 }

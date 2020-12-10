@@ -2,6 +2,8 @@ package com.airlinesReservationRESTApp.services;
 
 import java.util.List;
 
+import com.airlinesReservationRESTApp.models.FlightPreference;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,4 +39,11 @@ public class FlightService {
 		flightDAO.deleteFlight(id);
 	}
 
+    public String getFlightsByUserPreference(FlightPreference flightPreference) {
+		return flightDAO.getFlightsByUserPreference(flightPreference);
+    }
+
+	public String getReservedSeatsByFlightId(Long id) {
+		return new Gson().toJson(flightDAO.getReservedSeatsByFlightId(id));
+	}
 }

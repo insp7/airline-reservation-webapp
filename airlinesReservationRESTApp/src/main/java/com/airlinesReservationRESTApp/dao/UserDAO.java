@@ -1,6 +1,7 @@
 package com.airlinesReservationRESTApp.dao;
 
 
+import com.airlinesReservationRESTApp.models.AuthenticationDetail;
 import com.airlinesReservationRESTApp.models.User;
 
 
@@ -52,5 +53,13 @@ public class UserDAO {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public String authenticateUser(AuthenticationDetail userDetails) {
+        User user = userRepository.findUserByEmail(userDetails.getEmail());
+        if(user != null && user.getPassword().equals(userDetails.getPassword())) {
+            return "User Authenticated: " + userDetails;
+        }
+        return "Access Denied! Wrong email/password.";
     }
 }

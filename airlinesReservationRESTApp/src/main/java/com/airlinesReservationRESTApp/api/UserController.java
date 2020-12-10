@@ -1,9 +1,9 @@
 package com.airlinesReservationRESTApp.api;
 
+import com.airlinesReservationRESTApp.models.AuthenticationDetail;
 import com.airlinesReservationRESTApp.models.User;
 
 import com.airlinesReservationRESTApp.services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,5 +51,10 @@ public class UserController {
     @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable Long id) {
         userService.deleteUser(id);
+    }
+
+    @GetMapping(path = "/authenticate")
+    public String authenticate(@RequestBody AuthenticationDetail userDetails) {
+        return userService.authenticateUser(userDetails);
     }
 }

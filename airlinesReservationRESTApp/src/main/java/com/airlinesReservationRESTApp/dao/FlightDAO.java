@@ -3,7 +3,11 @@ package com.airlinesReservationRESTApp.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.airlinesReservationRESTApp.models.FlightPreference;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,12 +23,12 @@ public class FlightDAO {
 	}
 
 	public void saveFlight(Flight flight) {
-		 if(flightRepository.existsById(flight.getId()))
-	            System.out.println("Flight Already Exists.");
-	        else {
-	            flightRepository.save(flight);
-	            System.out.println("Flight Saved.");
-	        }
+		if(flightRepository.existsById(flight.getId()))
+			System.out.println("Flight Already Exists.");
+		else {
+			flightRepository.save(flight);
+			System.out.println("Flight Saved.");
+		}
 	}
 	
 	public List<Flight> getFlights() {
@@ -41,18 +45,36 @@ public class FlightDAO {
 	}
 
 	public void updateFlight(Flight updatedFlight) {
-		 if(flightRepository.existsById(updatedFlight.getId())) {
-	            flightRepository.save(updatedFlight);
-	        } else {
-	            System.out.println("Trying to update a flight which doesn't exist.");
-	        }
+		if(flightRepository.existsById(updatedFlight.getId())) {
+			flightRepository.save(updatedFlight);
+		} else {
+			System.out.println("Trying to update a flight which doesn't exist.");
+		}
 	}
 
 	public void deleteFlight(Long id) {
-		 flightRepository.deleteById(id);
-		
+    	flightRepository.deleteById(id);
 	}
-	
-	
 
+
+    public String getFlightsByUserPreference(FlightPreference flightPreference) {
+    	long source = flightPreference.getSource();
+    	long destination = flightPreference.getDestination();
+    	String departureDate = flightPreference.getDepartureDate();
+    	String passengersCount = flightPreference.getPassengersCount();
+    	String returnDate = flightPreference.getReturnDate();
+
+		List<Flight> departureDateFlights = flightRepository.findFlightByUserPreference(source, destination, departureDate, passengersCount);
+
+		if(returnDate != null) {
+			List<Flight> returnDateFlights = flightRepository.findFlightByUserPreference(destination, source, returnDate, passengersCount);
+			List<Flight> flights = Stream.concat(departureDateFlights.stream(), returnDateFlights.stream()).collect(Collectors.toList());
+			return new Gson().toJson(flights);
+		}
+		return new Gson().toJson(departureDateFlights);
+    }
+
+	public List<Integer> getReservedSeatsByFlightId(Long id) {
+    	return flightRepository.getReservedSeatsByFlightId(id);
+	}
 }

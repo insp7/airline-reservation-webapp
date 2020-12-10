@@ -28,7 +28,7 @@ public class ReservationController {
 	public ReservationController(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
-	
+
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Reservation> getAll() {
         return reservationService.getReservations();
