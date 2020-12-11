@@ -13,3 +13,9 @@ Airline Reservation is a web application which provides a user-friendly User Int
 8. Admin can add or delete a flight.
 9. Logging for each issuance/cancellation of tickets should be made in the system.
 10. Payment.
+
+
+#### TO DO:
+1. Secure the REST api using spring security.
+1. Create a file which lists out all the endpoints of this api and their purpose.
+2. Create a documentation file.

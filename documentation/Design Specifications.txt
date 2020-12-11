@@ -21,17 +21,3 @@ airports(id, name, city, state);
 flights(id, source, destination, departure_date, arrival_date, cabin_class, capacity, fare);
 reservations(id, user_id, flight_id, cabin_class, total_fare, created_at, is_cancelled); 
 passengers(reservation_id, seat_no, first_name, last_name, gender, date_of_birth, passenger_type);
-
-# PROJECT SETTINGS:
-
-URL = http://localhost:8080/airlinesReservationRESTApp_war_exploded/
-
-# USER END POINTS
-
-GET http://localhost:8080/airlinesReservationRESTApp/users 
-GET http://localhost:8080/airlinesReservationRESTApp/users/{id}
-POST http://localhost:8080/airlinesReservationRESTApp/users
-PUT http://localhost:8080/airlinesReservationRESTApp/users/{id}
-DELETE http://localhost:8080/airlinesReservationRESTApp/users/{id}
-
-{"id":7,"firstName":"ABCUpdated","lastName":"XYZUpdated","email":"abc@gmail.comUpdated","password":"abcUpdated","gender":"M","dateOfBirth":"11-APR-2002","contactNo":"1234567890","isAdmin":0}
