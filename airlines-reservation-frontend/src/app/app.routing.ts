@@ -4,8 +4,13 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 const routes: Routes =[
+  {
+    path: 'register',
+    component: RegisterUserComponent
+  }, 
   {
     path: '',
     redirectTo: 'dashboard',
@@ -24,9 +29,7 @@ const routes: Routes =[
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
-       useHash: true
-    })
+    RouterModule.forRoot(routes)
   ],
   exports: [
   ],

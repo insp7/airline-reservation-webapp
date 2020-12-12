@@ -23,7 +23,7 @@ import {
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
-import { UserRegistrationService } from './user-registration.service';
+import { UserService } from './user.service';
 
 @NgModule({
   imports: [
@@ -44,7 +44,7 @@ import { UserRegistrationService } from './user-registration.service';
     RegisterUserComponent,
 
   ],
-  providers: [UserRegistrationService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
