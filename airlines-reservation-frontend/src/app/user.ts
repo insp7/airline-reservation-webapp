@@ -1,5 +1,4 @@
 export class User {
-	id: number;
 	firstName: string; 
 	lastName: string; 
 	email: string; 
@@ -7,4 +6,5 @@ export class User {
 	gender: string; 
 	datetOfBirth: string; 
 	contactNo: number;
+	isAdmin: number;
 }

@@ -1,0 +1,26 @@
+<center>
+	<div class="col-md-3">
+		<div class="card">
+			<div class="card-header card-header-success">
+				<h3 class="card-title">Login</h3>
+				<p class="card-category">Please provide the following details</p>
+			</div>
+			<div class="card-body">
+				<form (ngSubmit)="authenticateUser()">
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" [(ngModel)]="userDetails.email" name="email" placeholder="Email" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="password" [(ngModel)]="userDetails.password" name="password" placeholder="Password" class="form-control" />
+						</div>
+					</div>				
+					<button mat-raised-button class="btn btn-primary" type="submit">Login</button>
+					<a href="/register" mat-raised-button class="btn btn-info">Sign up</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</center>

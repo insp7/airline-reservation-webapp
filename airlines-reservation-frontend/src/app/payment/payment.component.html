@@ -1,0 +1,12 @@
+<div *ngIf="!paidFor">
+	<h1>Buy this for {{ product.price }}</h1>
+	<p>{{ product.description }}</p>
+
+</div>
+
+<div *ngIf="paidFor">
+	<h1>Reservation Successfuly!</h1>
+	<p>Spent {{ product.price }}</p>
+</div>
+
+<div #paypal></div>

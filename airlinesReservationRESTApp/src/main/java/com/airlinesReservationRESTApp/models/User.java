@@ -1,6 +1,10 @@
 package com.airlinesReservationRESTApp.models;
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -11,6 +15,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
@@ -23,7 +28,7 @@ public class User implements Serializable {
 
     public User() { }
 
-    public User(long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String contactNo, int isAdmin) {
+    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String contactNo, int isAdmin) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,11 +40,11 @@ public class User implements Serializable {
         this.isAdmin = isAdmin;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

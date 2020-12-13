@@ -24,6 +24,9 @@ import {
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UserService } from './user.service';
+import { PaymentComponent } from './payment/payment.component';
+import { LoginComponent } from './login/login.component';
+import { FlightsSearchComponent } from './flights-search/flights-search.component';
 
 @NgModule({
   imports: [
@@ -42,6 +45,9 @@ import { UserService } from './user.service';
     AppComponent,
     AdminLayoutComponent,
     RegisterUserComponent,
+    PaymentComponent,
+    LoginComponent,
+    FlightsSearchComponent,
 
   ],
   providers: [UserService],

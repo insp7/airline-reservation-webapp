@@ -5,6 +5,7 @@ import com.airlinesReservationRESTApp.models.AuthenticationDetail;
 import com.airlinesReservationRESTApp.models.User;
 
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,12 +23,13 @@ public class UserDAO {
     }
 
     public void saveUser(User user) {
-        if(userRepository.existsById(user.getId()))
-            System.out.println("User Already Exists.");
-        else {
-            userRepository.save(user);
-            System.out.println("User Saved.");
-        }
+//        if(userRepository.existsById(user.getId()))
+//            System.out.println("User Already Exists.");
+//        else {
+//            userRepository.save(user);
+//            System.out.println("User Saved.");
+//        }
+        userRepository.save(user);
     }
 
     public List<User> getUsers() {
@@ -55,11 +57,12 @@ public class UserDAO {
         userRepository.deleteById(id);
     }
 
-    public String authenticateUser(AuthenticationDetail userDetails) {
+    public User authenticateUser(AuthenticationDetail userDetails) {
         User user = userRepository.findUserByEmail(userDetails.getEmail());
         if(user != null && user.getPassword().equals(userDetails.getPassword())) {
-            return "User Authenticated: " + userDetails;
+            System.out.println("User authenticated!");
+            return user;
         }
-        return "Access Denied! Wrong email/password.";
+        return null;
     }
 }

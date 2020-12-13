@@ -2,7 +2,7 @@
 	<div class="col-md-4">
 		<div class="card">
 			<div class="card-header card-header-primary">
-				<h3 class="card-title">Register</h3>
+				<h3 class="card-title">Flights Search</h3>
 				<p class="card-category">Please provide the following details</p>
 			</div>
 			<div class="card-body">
@@ -14,32 +14,32 @@
 					</div> -->
 					<div class="col-sm-8">
 						<div class="form-group">	
-							<input type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name" class="form-control" />
+							<input type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="From" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" class="form-control" />
+							<input type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="To" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" [(ngModel)]="user.email" name="email" placeholder="Email" class="form-control" />
+							<input type="date" [(ngModel)]="user.email" name="email" placeholder="Departure Date" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" class="form-control" />
+							<input type="date" [(ngModel)]="user.password" name="password" placeholder="Return Date" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="date" [(ngModel)]="user.dateOfBirth" name="dateOfBirth" class="form-control" />
+							<input type="number" [(ngModel)]="user.contactNo" name="contactNo" placeholder="Class" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="number" [(ngModel)]="user.contactNo" name="contactNo" placeholder="Contact No." class="form-control" />
+							<input type="number" [(ngModel)]="user.contactNo" name="contactNo" placeholder="Passengers" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -48,8 +48,8 @@
 								<div class="row">
 									<div class="col-sm-6">
 										<label class="form-check-label">
-											<input class="form-check-input" type="radio" name="radio" id="male" value="m" [(ngModel)]="user.gender">
-											Male
+											<input class="form-check-input" type="radio" name="radio" id="one-way" value="0" [(ngModel)]="user.gender">
+											One Way
 											<span class="circle">
 												<span class="check"></span>
 											</span>
@@ -57,8 +57,8 @@
 									</div>						
 									<div class="col-sm-4">
 										<label class="form-check-label">
-											<input class="form-check-input" type="radio" name="radio" id="female" value="f" [(ngModel)]="user.gender">
-											Female
+											<input class="form-check-input" type="radio" name="radio" id="round-trip" value="1" [(ngModel)]="user.gender">
+											Round Trip
 											<span class="circle">
 												<span class="check"></span>
 											</span>

@@ -53,7 +53,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @GetMapping(path = "/authenticate")
+    @PostMapping(path = "/authenticate")
     public String authenticate(@RequestBody AuthenticationDetail userDetails) {
         return userService.authenticateUser(userDetails);
     }
