@@ -1,0 +1,31 @@
+<div class="card">
+	<div class="card-header card-header-warning" >
+	  <h4 class="card-title">Airports</h4>
+	  <p class="card-category">List of available airports</p>
+	</div>
+	<div class="card-content table-responsive table-full-width">
+	  <table class="table">
+		<thead class="text-danger">
+		  <th>ID</th>
+		  <th>Name</th>
+		  <th>City</th>
+		  <th>State</th>
+		  <th>Edit</th>
+		  <th>Delete</th>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let airport of airports | async">
+			<td>{{ airport.id }}</td>
+			<td>{{ airport.name }}</td>
+			<td>{{ airport.city }}</td>
+			<td>{{ airport.state }}</td>
+			<td><button mat-raised-button class="btn btn-info btn-sm" (click)="edit(airport)">Edit</button></td>
+			<td><button mat-raised-button class="btn btn-danger btn-sm">Delete</button></td>
+		  </tr>
+		</tbody>
+	  </table>
+
+	  <a href="/add-airport" mat-raised-button class="btn btn-primary btn-lg">Add</a>
+	</div>
+  </div>
+	  

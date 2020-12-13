@@ -1,0 +1,35 @@
+<center>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-header card-header-primary">
+				<h3 class="card-title">Airports > Create</h3>
+				<p class="card-category">Please provide the following details</p>
+			</div>
+			<div class="card-body">
+				<form (ngSubmit)="createAirport()">
+					<div class="col-sm-8">
+						<div class="form-group">	
+							<input type="text" [(ngModel)]="airport.id" name="id" placeholder="ID" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" [(ngModel)]="airport.name" name="name" placeholder="Name" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" [(ngModel)]="airport.city" name="city" placeholder="City" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" [(ngModel)]="airport.state" name="state" placeholder="State" class="form-control" />
+						</div>
+					</div>
+					<button mat-raised-button class="btn btn-primary" type="submit">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</center>

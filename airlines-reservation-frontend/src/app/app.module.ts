@@ -27,6 +27,10 @@ import { UserService } from './user.service';
 import { PaymentComponent } from './payment/payment.component';
 import { LoginComponent } from './login/login.component';
 import { FlightsSearchComponent } from './flights-search/flights-search.component';
+import { ViewFlightsComponent } from './view-flights/view-flights.component';
+import { ViewAirportsComponent } from './view-airports/view-airports.component';
+import { AirportAddComponent } from './airport-add/airport-add.component';
+import { AirportEditComponent } from './airport-edit/airport-edit.component';
 
 @NgModule({
   imports: [
@@ -48,6 +52,10 @@ import { FlightsSearchComponent } from './flights-search/flights-search.componen
     PaymentComponent,
     LoginComponent,
     FlightsSearchComponent,
+    ViewFlightsComponent,
+    ViewAirportsComponent,
+    AirportAddComponent,
+    AirportEditComponent,
 
   ],
   providers: [UserService],
