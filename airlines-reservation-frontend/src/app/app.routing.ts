@@ -12,13 +12,21 @@ import { ViewFlightsComponent } from './view-flights/view-flights.component';
 import { ViewAirportsComponent } from './view-airports/view-airports.component';
 import { AirportAddComponent } from './airport-add/airport-add.component';
 import { AirportEditComponent } from './airport-edit/airport-edit.component';
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { FlightSelectComponent } from './flight-select/flight-select.component';
+import { SelectSeatsComponent } from './select-seats/select-seats.component';
+import { AddPassengerDetailsComponent } from './add-passenger-details/add-passenger-details.component';
 
 const routes: Routes = [
-  { path: 'view-airports', component: ViewAirportsComponent },
-  { path: 'edit-airport', component: AirportEditComponent },
-  { path: 'add-airport', component: AirportAddComponent },
-  { path: 'view-flights', component: ViewFlightsComponent },
-  { path: 'flights-search', component: FlightsSearchComponent },
+  { path: 'airports', component: ViewAirportsComponent },
+  { path: 'airport/edit/:id', component: AirportEditComponent },
+  { path: 'airport/add', component: AirportAddComponent },
+  { path: 'flights', component: ViewFlightsComponent },
+  { path: 'flight/edit/:id', component: FlightEditComponent },
+  { path: 'flights/search', component: FlightsSearchComponent },
+  { path: 'flights/select', component: FlightSelectComponent },
+  { path: 'flights/select-seats', component: SelectSeatsComponent },
+  { path: 'flights/add-passengers', component: AddPassengerDetailsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'payment', component: PaymentComponent },  

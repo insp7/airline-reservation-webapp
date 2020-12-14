@@ -3,6 +3,7 @@ package com.airlinesReservationRESTApp.services;
 import java.util.List;
 
 import com.airlinesReservationRESTApp.models.FlightPreference;
+import com.airlinesReservationRESTApp.models.ResponseStatus;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,19 +28,31 @@ public class FlightService {
 		return flightDAO.getFlight(id);
 	}
 
-	public void addFlight(Flight flight) {
-		 flightDAO.saveFlight(flight);
+	public ResponseStatus addFlight(Flight flight) {
+		 boolean isAdded = flightDAO.saveFlight(flight);
+		 ResponseStatus responseStatus;
+		if(isAdded)
+			responseStatus = new ResponseStatus("Success", "Flight Added Successfully!");
+		else
+			responseStatus = new ResponseStatus("Error", "Trying to add a flight which doesnt exist!");
+		return responseStatus;
 	}
 
-	public void updateFlight(Flight updatedFlight) {
-		   flightDAO.updateFlight(updatedFlight);
+	public ResponseStatus updateFlight(Flight updatedFlight) {
+		boolean isUpdated = flightDAO.updateFlight(updatedFlight);
+		ResponseStatus responseStatus;
+		if(isUpdated)
+			responseStatus = new ResponseStatus("Success", "Flight Updated Successfully!");
+		else
+			responseStatus = new ResponseStatus("Error", "Trying to update a flight which doesnt exist!");
+		return responseStatus;
 	}
 
 	public void deleteFlight(Long id) {
 		flightDAO.deleteFlight(id);
 	}
 
-    public String getFlightsByUserPreference(FlightPreference flightPreference) {
+    public List<Flight> getFlightsByUserPreference(FlightPreference flightPreference) {
 		return flightDAO.getFlightsByUserPreference(flightPreference);
     }
 

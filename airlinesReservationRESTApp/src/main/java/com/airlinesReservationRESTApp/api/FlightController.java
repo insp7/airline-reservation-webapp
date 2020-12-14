@@ -2,7 +2,7 @@ package com.airlinesReservationRESTApp.api;
 
 import java.util.List;
 
-import com.airlinesReservationRESTApp.models.FlightPreference;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.airlinesReservationRESTApp.models.FlightPreference;
+import com.airlinesReservationRESTApp.models.ResponseStatus;
 import com.airlinesReservationRESTApp.models.Flight;
 import com.airlinesReservationRESTApp.services.FlightService;
 
@@ -41,13 +43,13 @@ public class FlightController {
 	}
 
 	@PostMapping
-	public void post(@RequestBody Flight flight) {
-		flightService.addFlight(flight);
+	public ResponseStatus post(@RequestBody Flight flight) {
+		return flightService.addFlight(flight);
 	}
 
 	@PutMapping
-	public void update(@RequestBody Flight updatedFlight) {
-		flightService.updateFlight(updatedFlight);
+	public ResponseStatus update(@RequestBody Flight updatedFlight) {
+		return flightService.updateFlight(updatedFlight);
 	}
 
 	@DeleteMapping(path = "/{id}")
@@ -55,9 +57,13 @@ public class FlightController {
 		flightService.deleteFlight(id);
 	}
 
-	@GetMapping(path = "/search")
-	public String getFlightsbyUserPreference(@RequestBody FlightPreference flightPreference) {
-		return flightService.getFlightsByUserPreference(flightPreference);
+	@PostMapping(path = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Flight> getFlightsByUserPreference(@RequestBody FlightPreference flightPreference) {
+		Gson gson =new Gson();
+		System.out.println(gson.toJson(flightPreference));
+		List<Flight> flights = flightService.getFlightsByUserPreference(flightPreference);
+		System.out.println(gson.toJson(flights));
+		return flights;
 	}
 
 	@GetMapping(path = "/reserved-seats/{id}")

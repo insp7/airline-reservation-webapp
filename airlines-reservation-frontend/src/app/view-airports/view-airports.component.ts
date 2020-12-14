@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AirportService } from 'app/airport.service';
 import { Observable } from 'rxjs';
 
+import { AirportService } from 'app/airport.service';
 import { Airport } from '../airport';
 
 @Component({
@@ -17,17 +17,21 @@ export class ViewAirportsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAirports();
-    console.log(this.airports);
   }
 
   getAirports() {
     this.airports = this.airportService.getAirports();
   }
 
-  edit(airport: Airport) {
-    console.log(airport);
-    window.localStorage.removeItem("editAirportID");
-    window.localStorage.setItem("editAirportID", airport.id.toString());
-    this.router.navigate(['edit-airport']);
+  deleteAirport(id: number) {   
+    console.log(id)
+    if(confirm('Are you sure you want to delete this record?')) {
+      this.airportService.deleteAirport(id)
+        .subscribe((result) => {
+          console.log('result is ', result)
+          // this.router.navigate['airports']
+          window.location.reload();
+        })
+    }    
   }
 }

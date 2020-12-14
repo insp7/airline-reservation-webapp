@@ -1,7 +1,9 @@
 package com.airlinesReservationRESTApp.api;
 
 import com.airlinesReservationRESTApp.models.Airport;
+import com.airlinesReservationRESTApp.models.ResponseStatus;
 import com.airlinesReservationRESTApp.services.AirportService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,13 +41,13 @@ public class AirportController {
     }
 
     @PostMapping
-    public void post(@RequestBody Airport airport) {
-        airportService.addAirport(airport);
+    public ResponseStatus post(@RequestBody Airport airport) {
+        return airportService.addAirport(airport);
     }
 
     @PutMapping
-    public void update(@RequestBody Airport updatedAirport) {
-        airportService.updateAirport(updatedAirport);
+    public ResponseStatus update(@RequestBody Airport updatedAirport) {
+        return airportService.updateAirport(updatedAirport);
     }
 
     @DeleteMapping(path = "/{id}")

@@ -19,12 +19,8 @@ public class ReservationDAO {
     }
 
     public void saveReservation(Reservation reservation) {
-        if(reservationRepository.existsById(reservation.getId()))
-            System.out.println("Repository Already Exists.");
-        else {
-        	reservationRepository.save(reservation);
-            System.out.println("Reservation Saved.");
-        }
+        reservationRepository.save(reservation);
+        System.out.println("Reservation Saved.");
     }
 
     public List<Reservation> getReservations() {

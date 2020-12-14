@@ -43,6 +43,13 @@ public class PassengerController {
         passengerService.addPassenger(passenger);
     }
 
+    @PostMapping(path = "/multiple")
+    public void post(@RequestBody Passenger[] passengers) {
+        for (Passenger passenger : passengers) {
+            passengerService.addPassenger(passenger);
+        }
+    }
+
     @PutMapping
     public void update(@RequestBody Passenger updatedPassenger) {
         passengerService.updatePassenger(updatedPassenger);

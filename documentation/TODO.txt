@@ -1,0 +1,16 @@
+1. Add checkbox for business/economy class in flights add/edit.
+2. reset password
+3. sessions.
+4. get user's reservations
+5. Show airport names instead of numbers
+6. show class names instead of numbers
+7. return date textfield should only appear if the user clicks the checkbox
+
+
+{
+	"source": 7,
+	"destination": 8,
+	"departureDate": "25-11-2020",
+	"returnDate": "01-01-2021",
+	"passengersCount": "5"
+}

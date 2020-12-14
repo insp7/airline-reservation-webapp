@@ -19,13 +19,13 @@
 			<td>{{ airport.name }}</td>
 			<td>{{ airport.city }}</td>
 			<td>{{ airport.state }}</td>
-			<td><button mat-raised-button class="btn btn-info btn-sm" (click)="edit(airport)">Edit</button></td>
-			<td><button mat-raised-button class="btn btn-danger btn-sm">Delete</button></td>
+			<td><a routerLink="/airport/edit/{{airport.id}}" mat-raised-button class="btn btn-info btn-sm">Edit</a></td>
+			<td><button mat-raised-button class="btn btn-danger btn-sm" (click)="deleteAirport(airport.id)">Delete</button></td>
 		  </tr>
 		</tbody>
 	  </table>
 
-	  <a href="/add-airport" mat-raised-button class="btn btn-primary btn-lg">Add</a>
+	  <a routerLink="/airport/add" mat-raised-button class="btn btn-primary btn-lg">Add</a>
 	</div>
   </div>
 	  

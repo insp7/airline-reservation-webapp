@@ -9,22 +9,22 @@
 				<form [formGroup]="editForm" (ngSubmit)="updateAirport()">
 					<div class="col-sm-8">
 						<div class="form-group">	
-							<input type="text" formControlName="airport.id" name="id" placeholder="ID" value="{airport.id}" class="form-control" />
+							<input type="text" formControlName="id" name="id" placeholder="ID" class="form-control" readonly/>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" formControlName="airport.name" name="name" placeholder="Name" class="form-control" />
+							<input type="text" formControlName="name" name="name" placeholder="Name" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" formControlName="airport.city" name="city" placeholder="City" class="form-control" />
+							<input type="text" formControlName="city" name="city" placeholder="City" class="form-control" />
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" formControlName="airport.state" name="state" placeholder="State" class="form-control" />
+							<input type="text" formControlName="state" name="state" placeholder="State" class="form-control" />
 						</div>
 					</div>
 					<button mat-raised-button class="btn btn-warning" type="submit">Update</button>

@@ -22,13 +22,11 @@ public class FlightDAO {
 		this.flightRepository = flightRepository;
 	}
 
-	public void saveFlight(Flight flight) {
+	public boolean saveFlight(Flight flight) {
 		if(flightRepository.existsById(flight.getId()))
-			System.out.println("Flight Already Exists.");
-		else {
-			flightRepository.save(flight);
-			System.out.println("Flight Saved.");
-		}
+			return false;
+		flightRepository.save(flight);
+		return true;
 	}
 	
 	public List<Flight> getFlights() {
@@ -44,12 +42,12 @@ public class FlightDAO {
         return flightOptional.isPresent() ? flightOptional.get() : null;
 	}
 
-	public void updateFlight(Flight updatedFlight) {
+	public boolean updateFlight(Flight updatedFlight) {
 		if(flightRepository.existsById(updatedFlight.getId())) {
 			flightRepository.save(updatedFlight);
-		} else {
-			System.out.println("Trying to update a flight which doesn't exist.");
+			return true;
 		}
+		return false;
 	}
 
 	public void deleteFlight(Long id) {
@@ -57,7 +55,7 @@ public class FlightDAO {
 	}
 
 
-    public String getFlightsByUserPreference(FlightPreference flightPreference) {
+    public List<Flight> getFlightsByUserPreference(FlightPreference flightPreference) {
     	long source = flightPreference.getSource();
     	long destination = flightPreference.getDestination();
     	String departureDate = flightPreference.getDepartureDate();
@@ -69,9 +67,12 @@ public class FlightDAO {
 		if(returnDate != null) {
 			List<Flight> returnDateFlights = flightRepository.findFlightByUserPreference(destination, source, returnDate, passengersCount);
 			List<Flight> flights = Stream.concat(departureDateFlights.stream(), returnDateFlights.stream()).collect(Collectors.toList());
-			return new Gson().toJson(flights);
+//			return new Gson().toJson(flights);
+			return flights;
 		}
-		return new Gson().toJson(departureDateFlights);
+
+//		return new Gson().toJson(departureDateFlights);
+		return departureDateFlights;
     }
 
 	public List<Integer> getReservedSeatsByFlightId(Long id) {

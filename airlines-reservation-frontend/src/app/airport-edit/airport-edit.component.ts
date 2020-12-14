@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
 import { Airport } from 'app/airport';
 import { AirportService } from 'app/airport.service';
-
-import { first } from "rxjs/operators";
-
+import { ResponseStatus } from 'app/response-status';
 
 @Component({
   selector: 'app-airport-edit',
@@ -13,43 +11,34 @@ import { first } from "rxjs/operators";
   styleUrls: ['./airport-edit.component.css']
 })
 export class AirportEditComponent implements OnInit {
-  airport: Airport;
-  editForm: FormGroup;
+  airport: Airport
+  editForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl(),
+    city: new FormControl(),
+    state: new FormControl()
+  })
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private airportService: AirportService) { }
-  ngOnInit(): void { 
-    let airportId = window.localStorage.getItem("editAirportID");
-    if(!airportId) {
-      alert("Invalid action.")
-      this.router.navigate(['view-airports']);
-      return;
-    }
-    this.editForm = this.formBuilder.group({
-      id: [''],
-      name: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required]
-    });
-    this.airportService.getAirportById(+airportId)
-      .subscribe( data => {
-        this.editForm.setValue(data.result);
-      });
+  constructor(private formBuilder: FormBuilder, private router: Router, private airportService: AirportService, private activatedRoute: ActivatedRoute) { }
+
+  ngOnInit(): void {
+    console.log(this.activatedRoute.snapshot.params.id);
+    this.airportService.getAirportById(this.activatedRoute.snapshot.params.id)
+      .subscribe((airport) => {
+        this.editForm = new FormGroup({
+          id: new FormControl(airport['id']),
+          name: new FormControl(airport['name']),
+          city: new FormControl(airport['city']),
+          state: new FormControl(airport['state'])
+        })    
+      })
   }
 
-  updateAirport(airport: Airport) {
-    this.airportService.updateUser(this.editForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          if(data.status === 200) {
-            alert('User updated successfully.');
-            this.router.navigate(['view-airports']);
-          }else {
-            alert(data.message);
-          }
-        },
-        error => {
-          alert(error);
-        });
+  updateAirport() {
+    this.airportService.updateAirport(this.editForm.value)
+      .subscribe((status: ResponseStatus) => {
+        console.log(status)
+        this.router.navigate['/airports']
+      }) 
   }
 }

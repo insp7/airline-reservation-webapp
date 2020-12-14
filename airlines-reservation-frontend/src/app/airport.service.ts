@@ -25,21 +25,19 @@ export class AirportService {
     return this.http.get(URL);
   }
 
-  saveAirport(airport: Airport): void {
-    this.http.post<Airport>(URL, airport, httpOptions)
-      .subscribe(() => {
-        console.log('Airport is ', airport);
-        this.router.navigate(['/view-airports']);
-      }, );
+  saveAirport(airport: Airport): Observable<any> {
+    return this.http.post<Airport>(URL, airport, httpOptions)
   }
 
-  // TO BE TESTED
   getAirportById(id: number): Observable<any> {
     return this.http.get(URL + '/' + id);
   }
 
-  // TO BE TESTED
-  updateUser(airport: Airport): Observable<any> {
-    return this.http.put(URL + '/' +airport.id, airport);
+  updateAirport(airport: Airport): Observable<any> {
+    return this.http.put<Airport>(URL, airport);
+  }
+
+  deleteAirport(id: number) {
+    return this.http.delete(URL + '/' + id)
   }
 }

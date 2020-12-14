@@ -23,12 +23,8 @@ public class PassengerDAO {
     }
 
     public void savePassenger(Passenger passenger) {
-        if(passengerRepository.existsById(passenger.getId()))
-            System.out.println("Passenger Already Exists.");
-        else {
-            passengerRepository.save(passenger);
-            System.out.println("Passenger Saved.");
-        }
+        passengerRepository.save(passenger);
+        System.out.println("Passenger Saved.");
     }
 
     public List<Passenger> getPassengers() {

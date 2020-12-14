@@ -2,6 +2,7 @@ package com.airlinesReservationRESTApp.services;
 
 import com.airlinesReservationRESTApp.dao.AirportDAO;
 import com.airlinesReservationRESTApp.models.Airport;
+import com.airlinesReservationRESTApp.models.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,14 @@ public class AirportService {
         this.airportDAO = airportDAO;
     }
 
-    public void addAirport(Airport airport) {
-        airportDAO.saveAirport(airport);
+    public ResponseStatus addAirport(Airport airport) {
+        boolean isAirportAdded = airportDAO.saveAirport(airport);
+        ResponseStatus responseStatus;
+        if(isAirportAdded)
+            responseStatus = new ResponseStatus("Success", "Airport Added Successfully");
+        else
+            responseStatus = new ResponseStatus("Error", "Cannot Insert! Airport Already Exists.");
+        return responseStatus;
     }
 
     public List<Airport> getAirports() {
@@ -28,8 +35,14 @@ public class AirportService {
         return airportDAO.getAirport(id);
     }
 
-    public void updateAirport(Airport updatedAirport) {
-        airportDAO.updateAirport(updatedAirport);
+    public ResponseStatus updateAirport(Airport updatedAirport) {
+        boolean isAirportUpdated = airportDAO.updateAirport(updatedAirport);
+        ResponseStatus responseStatus;
+        if(isAirportUpdated)
+            responseStatus = new ResponseStatus("Success", "Airport Updated Successfully");
+        else
+            responseStatus = new ResponseStatus("Error", "Trying to update an airport that doesnt exist.");
+        return responseStatus;
     }
 
     public void deleteAirport(Long id) {

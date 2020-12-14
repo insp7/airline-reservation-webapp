@@ -14,11 +14,10 @@
 		  <th>Capacity</th>
 		  <th>Cabin Class</th>
 		  <th>Fare</th>
-		  <th>Edit</th>
-		  <th>Delete</th>
+		  <th>Select</th>
 		</thead>
 		<tbody>
-		  <tr *ngFor="let flight of flights | async">
+		  <tr *ngFor="let flight of flights">
 			<td>{{ flight.id }}</td>
 			<td>{{ flight.source }}</td>
 			<td>{{ flight.destination }}</td>
@@ -27,13 +26,10 @@
 			<td>{{ flight.capacity }}</td>
 			<td>{{ flight.cabinClass }}</td>
 			<td>{{ flight.fare }}</td>
-			<td><a routerLink="/flight/edit/{{flight.id}}" mat-raised-button class="btn btn-info btn-sm">Edit</a></td>
-			<td><button mat-raised-button class="btn btn-danger btn-sm" (click)="deleteFlight(flight.id)">Delete</button></td>
+			<td><button mat-raised-button class="btn btn-default btn-sm" (click)="selectFlight(flight.id)">Select</button></td>
 		  </tr>
 		</tbody>
 	  </table>
-
-	  <a routerLink="/flight/add" mat-raised-button class="btn btn-primary btn-lg">Add</a>
 	</div>
   </div>
 	  

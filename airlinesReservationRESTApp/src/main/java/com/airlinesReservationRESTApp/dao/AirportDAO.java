@@ -18,12 +18,12 @@ public class AirportDAO {
         this.airportRepository = airportRepository;
     }
 
-    public void saveAirport(Airport airport) {
+    public boolean saveAirport(Airport airport) {
         if(airportRepository.existsById(airport.getId()))
-            System.out.println("Airport Already Exists.");
+            return false;
         else {
             airportRepository.save(airport);
-            System.out.println("Airport Saved.");
+            return true;
         }
     }
 
@@ -40,12 +40,12 @@ public class AirportDAO {
         return airportOptional.isPresent() ? airportOptional.get() : null;
     }
 
-    public void updateAirport(Airport updatedAirport) {
+    public boolean updateAirport(Airport updatedAirport) {
         if(airportRepository.existsById(updatedAirport.getId())) {
             airportRepository.save(updatedAirport);
-        } else {
-            System.out.println("Trying to update an Airport which doesn't exist.");
-        }
+            return true;
+        } else
+            return false;
     }
 
     public void deleteAirport(Long id) {

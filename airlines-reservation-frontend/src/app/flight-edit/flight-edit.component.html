@@ -1,0 +1,55 @@
+<center>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-header card-header-primary">
+				<h3 class="card-title">Edit Flight</h3>
+				<p class="card-category">Please provide the following details</p>
+			</div>
+			<div class="card-body">
+				<form [formGroup]="editForm" (ngSubmit)="updateFlight()">
+					<div class="col-sm-8">
+						<div class="form-group">	
+							<input type="text" formControlName="id" name="id" placeholder="ID" class="form-control" readonly/>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" formControlName="source" name="source" placeholder="Source" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="text" formControlName="destination" name="destination" placeholder="Destination" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="datetime" formControlName="departureDate" name="departureDate" placeholder="Departure Date" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="datetime" formControlName="arrivalDate" name="arrivalDate" placeholder="Arrival Date" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="datetime" formControlName="capacity" name="capacity" placeholder="Capacity" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" formControlName="cabinClass" name="cabinClass" placeholder="Cabin Class" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" formControlName="fare" name="fare" placeholder="Fare" class="form-control" />
+						</div>
+					</div>
+					<button mat-raised-button class="btn btn-warning" type="submit">Update</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</center>

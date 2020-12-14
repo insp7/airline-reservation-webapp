@@ -31,6 +31,10 @@ import { ViewFlightsComponent } from './view-flights/view-flights.component';
 import { ViewAirportsComponent } from './view-airports/view-airports.component';
 import { AirportAddComponent } from './airport-add/airport-add.component';
 import { AirportEditComponent } from './airport-edit/airport-edit.component';
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { FlightSelectComponent } from './flight-select/flight-select.component';
+import { AddPassengerDetailsComponent } from './add-passenger-details/add-passenger-details.component';
+import { SelectSeatsComponent } from './select-seats/select-seats.component';
 
 @NgModule({
   imports: [
@@ -56,6 +60,10 @@ import { AirportEditComponent } from './airport-edit/airport-edit.component';
     ViewAirportsComponent,
     AirportAddComponent,
     AirportEditComponent,
+    FlightEditComponent,
+    FlightSelectComponent,
+    AddPassengerDetailsComponent,
+    SelectSeatsComponent,
 
   ],
   providers: [UserService],
