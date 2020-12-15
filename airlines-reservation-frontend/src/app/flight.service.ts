@@ -45,4 +45,8 @@ export class FlightService {
   searchFlights(flightPreference: FlightPreference): Observable<any> {
     return this.http.post<Flight[]>('http://localhost:8080/airlinesReservationRESTApp_war_exploded/flights/search', flightPreference, httpOptions)
   }
+
+  getBookedSeats(flightId: number): Observable<any> {
+    return this.http.get(URL + '/reserved-seats/' + flightId)
+  }
 }

@@ -18,16 +18,20 @@ public class ReservationDAO {
         this.reservationRepository = reservationRepository;
     }
 
-    public void saveReservation(Reservation reservation) {
+    public Long saveReservation(Reservation reservation) {
         reservationRepository.save(reservation);
         System.out.println("Reservation Saved.");
+        Long insertedID = reservationRepository.findLastInsertedRecord();
+        System.out.println("Last inserted id = " + insertedID);
+        return insertedID;
     }
 
     public List<Reservation> getReservations() {
+        System.out.println("Coming here");
         Iterable<Reservation> iterable = reservationRepository.findAll();
         List<Reservation> reservations = new ArrayList<>();
         iterable.forEach(reservations::add);
-
+        System.out.println(reservations.toString());
         return reservations;
     }
 

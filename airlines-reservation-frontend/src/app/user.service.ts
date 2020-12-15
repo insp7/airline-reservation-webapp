@@ -43,7 +43,7 @@ export class UserService {
           if(data.isAdmin == 1) { 
             // this.router.navigate(['/'])
             console.log("Admin");
-            
+            // localStorage.setItem('userId', '' + data.id)
           } else {
             this.router.navigate(['/']);
           }

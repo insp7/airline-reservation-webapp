@@ -18,32 +18,32 @@
 		  <tr *ngFor="let passenger of passengers; let i = index;"> 
 			<td>
 				<div class="form-group">
-					<input type="number" [(ngModel)]="passengers[i].seatNo" name="seatNo" placeholder="Password" class="form-control" />
+					<input type="number" [(ngModel)]="passengers[i].seatNo" name="seatNo" placeholder="Seat No" class="form-control" />
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-					<input type="text" [(ngModel)]="passengers[i].firstName" name="firstName" placeholder="Password" class="form-control" />
+					<input type="text" [(ngModel)]="passengers[i].firstName" name="firstName" placeholder="First Name" class="form-control" />
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-					<input type="text" [(ngModel)]="passengers[i].lastName" name="lastName" placeholder="Password" class="form-control" />
+					<input type="text" [(ngModel)]="passengers[i].lastName" name="lastName" placeholder="Last Name" class="form-control" />
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].gender" name="gender" placeholder="Password" class="form-control" />
+					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].gender" name="gender" placeholder="Gender" class="form-control" />
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-					<input type="datetime" [(ngModel)]="passengers[i].dateOfBirth" name="dateOfBirth" placeholder="Password" class="form-control" />
+					<input type="datetime" [(ngModel)]="passengers[i].dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" class="form-control" />
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].passengerType" name="passengerType" placeholder="Password" class="form-control" />
+					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].passengerType" name="passengerType" placeholder="Passenger Type" class="form-control" />
 				</div>
 			</td>
 		  </tr>

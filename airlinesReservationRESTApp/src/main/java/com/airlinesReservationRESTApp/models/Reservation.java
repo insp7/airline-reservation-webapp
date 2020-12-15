@@ -16,17 +16,17 @@ public class Reservation implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private long userId;
-	private long flightId;
-	private String cabinClass;
-	private int isCancelled;
-	private int totalFare;
-	private int returnedAmount;
+	private Long userId;
+	private Long flightId;
+	private Integer cabinClass;
+	private Integer isCancelled;
+	private Integer totalFare;
+	private Integer returnedAmount;
 	private String createdAt;
 	
 	public Reservation() { }
-	
-	public Reservation(long id, long userId, long flightId, String cabinClass, int isCancelled, int totalFare, int returnedAmount, String createdAt) {
+
+	public Reservation(Long id, Long userId, Long flightId, Integer cabinClass, Integer isCancelled, Integer totalFare, Integer returnedAmount, String createdAt) {
 		this.id = id;
 		this.userId = userId;
 		this.flightId = flightId;
@@ -45,51 +45,51 @@ public class Reservation implements Serializable {
 		this.id = id;
 	}
 
-	public long getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public long getFlightId() {
+	public Long getFlightId() {
 		return flightId;
 	}
 
-	public void setFlightId(long flightId) {
+	public void setFlightId(Long flightId) {
 		this.flightId = flightId;
 	}
 
-	public String getCabinClass() {
+	public Integer getCabinClass() {
 		return cabinClass;
 	}
 
-	public void setCabinClass(String cabinClass) {
+	public void setCabinClass(Integer cabinClass) {
 		this.cabinClass = cabinClass;
 	}
 
-	public int getIsCancelled() {
+	public Integer getIsCancelled() {
 		return isCancelled;
 	}
 
-	public void setIsCancelled(int isCancelled) {
+	public void setIsCancelled(Integer isCancelled) {
 		this.isCancelled = isCancelled;
 	}
 
-	public int getTotalFare() {
+	public Integer getTotalFare() {
 		return totalFare;
 	}
 
-	public void setTotalFare(int totalFare) {
+	public void setTotalFare(Integer totalFare) {
 		this.totalFare = totalFare;
 	}
-	
-	 public int getReturnedAmount() {
+
+	public Integer getReturnedAmount() {
 		return returnedAmount;
 	}
 
-	public void setReturnedAmount(int returnedAmount) {
+	public void setReturnedAmount(Integer returnedAmount) {
 		this.returnedAmount = returnedAmount;
 	}
 
@@ -102,30 +102,31 @@ public class Reservation implements Serializable {
 	}
 
 	@Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
 
-	        Reservation reservation = (Reservation) o;
+		Reservation that = (Reservation) o;
 
-	        return id.equals(reservation.id);
-	    }
-	
+		return id.equals(that.id);
+	}
+
 	@Override
-    public int hashCode() {
-        return (int) (id ^ (id >>> 32));
-    }
-	
-	 @Override
-	    public String toString() {
-	        return "Reservation{" +
-	                "id=" + id +
-	                ", user_id=" + userId +
-	                ", flight_id=" + flightId +
-	                ", cabin_class='" + cabinClass + '\'' +
-	                ", total_fare='" + totalFare + '\'' +
-	                ", is_cancelled=" + isCancelled +
-	                '}';
-	    }	
-	
+	public int hashCode() {
+		return id.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation{" +
+				"id=" + id +
+				", userId=" + userId +
+				", flightId=" + flightId +
+				", cabinClass='" + cabinClass + '\'' +
+				", isCancelled=" + isCancelled +
+				", totalFare=" + totalFare +
+				", returnedAmount=" + returnedAmount +
+				", createdAt='" + createdAt + '\'' +
+				'}';
+	}
 }

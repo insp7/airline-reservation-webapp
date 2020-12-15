@@ -40,8 +40,8 @@ public class ReservationController {
     }
 
     @PostMapping
-    public void post(@RequestBody Reservation reservation) {
-    	reservationService.addReservation(reservation);
+    public String post(@RequestBody Reservation reservation) {
+    	return reservationService.addReservation(reservation);
     }
 
     @PutMapping

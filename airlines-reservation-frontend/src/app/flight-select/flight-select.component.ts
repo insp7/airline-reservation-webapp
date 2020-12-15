@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Flight } from 'app/flight'
 import { FlightPreference } from 'app/flight-preference';
@@ -16,8 +17,9 @@ export class FlightSelectComponent implements OnInit {
   selectedFlightId: number
   selectedFlight: Observable<Flight>
   flightPreference: FlightPreference
+  userId = 67
 
-  constructor(private reservationService: ReservationService, private flightService: FlightService) { }
+  constructor(private reservationService: ReservationService, private flightService: FlightService, private router: Router) { }
 
   ngOnInit(): void {
     this.flights = JSON.parse(localStorage.getItem('flightsByPreference'))
@@ -25,9 +27,14 @@ export class FlightSelectComponent implements OnInit {
     this.selectedFlight = this.flightService.getFlightById(this.selectedFlightId)
   }
 
-  selectFlight(id: number) {
-    this.selectedFlightId = id
-    localStorage.setItem('flightId', '' + id)
+  selectFlight(flight: Flight) {
+    this.selectedFlightId = flight.id
+    localStorage.setItem('flightId', '' + flight.id)
+    localStorage.setItem('flightObject', JSON.stringify(flight))
+    localStorage.setItem('userId', '' + this.userId) 
+    // this.router.navigate(['/flights/add-passengers'])
+    this.router.navigate(['/flights/select-seats'])
+
     // if(localStorage.getItem('userID')) {
       // this.reservationService.makeReservation(65, id, this.selectedFlightId.cabinClass, )
     // }

@@ -13,8 +13,8 @@ html {
 }
 .plane {
     margin:  auto;
-    max-width: 350px;
-    align-content: center;
+    max-width: 275px;
+    /* align-content: center; */
 }
 h3{
     text-align: center;
@@ -49,9 +49,9 @@ ol {
     padding: 8px;
     position: relative;
 }
-.seat:nth-child(3) {
+/* .seat:nth-child(3) {
     margin-right: 28%;
-}
+} */
 .seat input[type=checkbox] {
     position: absolute;
     opacity: 0;

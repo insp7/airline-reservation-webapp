@@ -16,6 +16,7 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightSelectComponent } from './flight-select/flight-select.component';
 import { SelectSeatsComponent } from './select-seats/select-seats.component';
 import { AddPassengerDetailsComponent } from './add-passenger-details/add-passenger-details.component';
+import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
 
 const routes: Routes = [
   { path: 'airports', component: ViewAirportsComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'flights/select', component: FlightSelectComponent },
   { path: 'flights/select-seats', component: SelectSeatsComponent },
   { path: 'flights/add-passengers', component: AddPassengerDetailsComponent },
+  { path: 'reservations', component: ViewReservationsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'payment', component: PaymentComponent },  

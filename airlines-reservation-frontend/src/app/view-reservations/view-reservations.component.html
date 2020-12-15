@@ -1,0 +1,31 @@
+<div class="card">
+	<div class="card-header card-header-warning" >
+	  <h4 class="card-title">Reservations</h4>
+	  <p class="card-category">List of available Reservations</p>
+	</div>
+	<div class="card-content table-responsive table-full-width">
+	  <table class="table">
+		<thead class="text-danger">
+		  <th>User ID</th>
+		  <th>Flight ID</th>
+		  <th>Cabin Class</th>
+		  <th>Status</th>
+		  <th>Total Fare</th>
+		  <th>Returned Amount</th>
+		  <th>Created at</th>
+		</thead>
+		<tbody>
+		  <tr *ngFor="let reservation of reservations">
+			<td>{{ reservation.userId }}</td>
+			<td>{{ reservation.flightId }}</td>
+			<td>{{ reservation.cabinClass }}</td>
+			<td>{{ reservation.status }}</td>
+			<td>{{ reservation.totalFare }}</td>
+			<td>{{ reservation.returnedAmount }}</td>
+			<td>{{ reservation.createdAt }}</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+  </div>
+	  

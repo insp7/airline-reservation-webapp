@@ -2,6 +2,7 @@ package com.airlinesReservationRESTApp.services;
 
 import java.util.List;
 
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,9 @@ public class ReservationService {
         this.reservationDAO = reservationDAO;
     }
 
-	public void addReservation(Reservation reservation) {
-		reservationDAO.saveReservation(reservation);
+	public String addReservation(Reservation reservation) {
+		Long reservationId = reservationDAO.saveReservation(reservation);
+		return new Gson().toJson(reservationId);
     }
 
     public List<Reservation> getReservations() {
