@@ -38,4 +38,8 @@ public class ReservationService {
     public void deleteReservation(Long id) {
     	reservationDAO.deleteReservation(id);
     }
+
+    public List<Reservation> getReservationsForUser(Long id) {
+        return reservationDAO.getReservationsForUser(id);
+    }
 }

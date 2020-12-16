@@ -5,6 +5,8 @@ import { FlightService } from 'app/flight.service';
 import { Flight } from 'app/flight';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Airport } from 'app/airport';
+import { AirportService } from 'app/airport.service';
 
 @Component({
   selector: 'app-flights-search',
@@ -15,10 +17,16 @@ export class FlightsSearchComponent implements OnInit {
   flightPreference: FlightPreference = new FlightPreference()
   flights: Flight[]
   allFlights: Observable<Flight[]>
+  airports: Airport[]
 
-  constructor(private flightService: FlightService, private router: Router) { }
+  constructor(private flightService: FlightService, private router: Router, private airportService: AirportService) { }
 
   ngOnInit(): void {
+    this.airportService.getAirports()
+      .subscribe((airports: Airport[]) => {
+        this.airports = airports
+        console.log('Airports are: ', this.airports)
+      })
     this.allFlights = this.flightService.getFlights()
   }
 

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { User } from './User';
 import { AuthenticationDetails } from './authentication-details';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,8 +22,8 @@ const AUTH_URL = 'http://localhost:8080/airlinesReservationRESTApp_war_exploded/
 export class UserService {
   constructor(private http: HttpClient, private router: Router) { }
 
-  getUsers() {
-    // get users
+  getUsers(): Observable<any> {
+    return this.http.get(URL)
   }
 
   saveUser(user: User): void {
@@ -33,22 +34,7 @@ export class UserService {
       }, );
   }
 
-  authenticateUser(userDetails: AuthenticationDetails): void {
-    this.http.post(AUTH_URL, userDetails, httpOptions)
-      .subscribe((data: User) => {
-        if(data == null) {
-          console.log('ERR WRONG USER');
-        } else {
-          console.log('User Details :', data);
-          if(data.isAdmin == 1) { 
-            // this.router.navigate(['/'])
-            console.log("Admin");
-            // localStorage.setItem('userId', '' + data.id)
-          } else {
-            this.router.navigate(['/']);
-          }
-        }
-        // this.router.navigate(['/']);
-      }, );
+  authenticateUser(userDetails: AuthenticationDetails): Observable<any> {
+    return this.http.post(AUTH_URL, userDetails, httpOptions)
   }
 }

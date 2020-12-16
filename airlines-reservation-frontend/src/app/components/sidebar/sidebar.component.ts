@@ -8,14 +8,18 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },
-    { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
-    { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
-    { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
+    { path: '/flights', title: 'Flights',  icon: 'flight', class: '' },
+    { path: '/reservations', title: 'Reservations',  icon:'bookmarks', class: '' },
+    { path: '/airports', title: 'Airports',  icon:'place', class: '' },
+    { path: '/flights-search', title: 'Search Flights',  icon:'search', class: '' },
+    { path: '/payment', title: 'Payment',  icon:'payment', class: '' },
+    { path: '/reservations-user', title: 'My Trips',  icon:'flight_takeoff', class: '' },
+];
+
+export const USERROUTES: RouteInfo[] = [
+  { path: '/flights-search', title: 'Search Flights',  icon:'search', class: '' },
+  { path: '/reservations-user', title: 'My Trips',  icon:'flight_takeoff', class: '' },
+  { path: '/payment', title: 'Payment',  icon:'payment', class: '' },
 ];
 
 @Component({
@@ -29,7 +33,12 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    if(localStorage.getItem('isAdmin') == '1'){ // is admin
+      this.menuItems = ROUTES.filter(menuItem => menuItem);
+    }else{
+      this.menuItems = USERROUTES.filter(menuItem => menuItem);
+    }
+    
   }
   isMobileMenu() {
       if ($(window).width() > 991) {

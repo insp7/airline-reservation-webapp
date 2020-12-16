@@ -17,27 +17,29 @@ import { FlightSelectComponent } from './flight-select/flight-select.component';
 import { SelectSeatsComponent } from './select-seats/select-seats.component';
 import { AddPassengerDetailsComponent } from './add-passenger-details/add-passenger-details.component';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import { FlightAddComponent } from './flight-add/flight-add.component';
 
 const routes: Routes = [
-  { path: 'airports', component: ViewAirportsComponent },
-  { path: 'airport/edit/:id', component: AirportEditComponent },
-  { path: 'airport/add', component: AirportAddComponent },
-  { path: 'flights', component: ViewFlightsComponent },
-  { path: 'flight/edit/:id', component: FlightEditComponent },
-  { path: 'flights/search', component: FlightsSearchComponent },
-  { path: 'flights/select', component: FlightSelectComponent },
-  { path: 'flights/select-seats', component: SelectSeatsComponent },
-  { path: 'flights/add-passengers', component: AddPassengerDetailsComponent },
-  { path: 'reservations', component: ViewReservationsComponent },
+  
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterUserComponent },
-  { path: 'payment', component: PaymentComponent },  
+  { path: 'register', component: RegisterUserComponent },  
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
   { path: '', component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
+    children: [
+    { path: 'airports', component: ViewAirportsComponent },
+    { path: 'airport/edit/:id', component: AirportEditComponent },
+    { path: 'airport/add', component: AirportAddComponent },
+    { path: 'flights', component: ViewFlightsComponent },
+    { path: 'flight/edit/:id', component: FlightEditComponent },
+    { path: 'flight/add', component: FlightAddComponent },
+    { path: 'flights-search', component: FlightsSearchComponent },
+    { path: 'flights/select', component: FlightSelectComponent },
+    { path: 'flights/select-seats', component: SelectSeatsComponent },
+    { path: 'flights/add-passengers', component: AddPassengerDetailsComponent },
+    { path: 'reservations', component: ViewReservationsComponent },
+    { path: 'reservations-user', component: UserReservationsComponent },
+    { path: 'payment', component: PaymentComponent },]
   }
 ];
 

@@ -46,4 +46,9 @@ public class PassengerDAO {
     public void deletePassenger(Long id) {
         passengerRepository.deleteById(id);
     }
+
+    public int deletePassengerByReservationId(Long id) {
+        int x = passengerRepository.deletePassengerByReservationId(id);
+        return x;
+    }
 }

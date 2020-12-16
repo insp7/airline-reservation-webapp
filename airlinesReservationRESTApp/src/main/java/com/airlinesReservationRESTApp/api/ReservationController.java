@@ -53,4 +53,9 @@ public class ReservationController {
     public void delete(@PathVariable Long id) {
     	reservationService.deleteReservation(id);
     }
+
+    @GetMapping(path = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Reservation> getReservationsForUser(@PathVariable Long id) {
+        return reservationService.getReservationsForUser(id);
+    }
 }

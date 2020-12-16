@@ -12,7 +12,9 @@ export class SelectSeatsComponent implements OnInit {
   flightId: number
   userId: number
   bookedSeats: number[]
+  mySeats= []
   testBookedSeats = [52, 53, 54, 55]
+  temp=[]
   constructor(private flightService: FlightService, private router: Router) { }
 
   ngOnInit(): void {
@@ -27,10 +29,28 @@ export class SelectSeatsComponent implements OnInit {
     console.log(this.bookedSeats)
   }
 
+  isBooked(no:number){
+    //console.log(no)
+      return this.bookedSeats.includes(no);
+  }
+
   confirmSeats() {
     // code to store the selected seats in the bookedSeats array
-    localStorage.setItem('bookedSeats', JSON.stringify(this.testBookedSeats))
+    localStorage.setItem('bookedSeats', JSON.stringify(this.mySeats))
     this.router.navigate(['/flights/add-passengers'])
+  }
+
+  getCheckboxValues(data) {
+    
+      console.log(data)
+      console.log("h")
+    
+      // Pushing the object into array
+      this.mySeats.push(data)
+
+    console.log(this.mySeats)
+    //Duplicates the obj if we uncheck it
+    //How to remove the value from array if we uncheck it
   }
 
 }

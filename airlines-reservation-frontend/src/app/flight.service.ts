@@ -35,7 +35,7 @@ export class FlightService {
   }
 
   updateFlight(flight: Flight): Observable<any> {
-    return this.http.put<Flight>(URL, flight)
+    return this.http.put(URL, flight)
   }
 
   deleteFlight(id: number) {

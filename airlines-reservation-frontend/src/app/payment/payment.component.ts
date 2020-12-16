@@ -11,8 +11,8 @@ export class PaymentComponent implements OnInit {
   @ViewChild('paypal', { static: true }) paypalElement: ElementRef;
 
   product = {
-    price: 99.99,
-    description: 'Flight from Mumbai to Pune LOL!'
+    price: 99,
+    description: 'Flight from Mumbai to Pune'
   };
 
   paidFor = false;

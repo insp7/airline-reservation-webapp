@@ -1,0 +1,63 @@
+<center>
+	<div class="col-md-4">
+		<div class="card">
+			<div class="card-header card-header-primary">
+				<h3 class="card-title">Flights > Create</h3>
+				<p class="card-category">Please provide the following details</p>
+			</div>
+			<div class="card-body">
+				<form (ngSubmit)="createFlight()">
+					<!-- <div class="col-sm-8">
+						<div class="form-group">	
+							<input type="text" [(ngModel)]="flight.id" name="id" placeholder="ID" class="form-control" />
+						</div>
+					</div> -->
+					<div class="col-sm-8">
+						<div class="form-group">
+							<select placeholder="Select Source" class="form-control"  [(ngModel)]="flight.source" [ngModelOptions]="{standalone: true}">
+								<option *ngFor="let airport of airports" value="{{airport.id}}">{{airport.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<select placeholder="Select Destination" class="form-control"  [(ngModel)]="flight.destination" [ngModelOptions]="{standalone: true}">
+								<option *ngFor="let airport of airports" value="{{airport.id}}">{{airport.name}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="date" [(ngModel)]="flight.departureDate" name="departureDate" placeholder="departureDate" class="form-control" />
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="date" [(ngModel)]="flight.arrivalDate" name="arrivalDate" placeholder="arrivalDate" class="form-control" />
+						</div>
+					</div>
+					<!-- <div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" [(ngModel)]="flight.capacity" name="capacity" placeholder="capacity" class="form-control" />
+						</div>
+					</div> -->
+					<div class="col-sm-8">
+						<div class="form-group">
+							<!-- <input type="text" [(ngModel)]="flight.cabinClass" name="cabinClass" placeholder="cabinClass" class="form-control" /> -->
+							<select placeholder="Cabin Class" class="form-control"  [(ngModel)]="flight.cabinClass" [ngModelOptions]="{standalone: true}">
+								<option value="1">Business Class</option>
+								<option value="2">Economy Class</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="form-group">
+							<input type="number" [(ngModel)]="flight.fare" name="fare" placeholder="fare" class="form-control" />
+						</div>
+					</div>
+					<button mat-raised-button class="btn btn-primary" type="submit">Add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</center>

@@ -29,4 +29,12 @@ export class ReservationService {
   makeReservation(reservation: Reservation): Observable<any> {
     return this.http.post(URL, reservation, httpOptions)
   }
+
+  getReservationsForUser(userId: number): Observable<any> {
+    return this.http.get(URL + '/user/' + userId)
+  }
+
+  updateReservation(reservation: Reservation): Observable<any> {
+    return this.http.put(URL, reservation)
+  }
 }

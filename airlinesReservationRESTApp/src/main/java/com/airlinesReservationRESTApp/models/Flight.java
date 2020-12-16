@@ -1,6 +1,8 @@
 package com.airlinesReservationRESTApp.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -11,6 +13,7 @@ public class Flight implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private long source;
     private long destination;
@@ -22,7 +25,7 @@ public class Flight implements Serializable {
 
     public Flight() { }
 
-    public Flight(long id, long source, long destination, String departureDate, String arrivalDate, int capacity, int cabinClass, int fare) {
+    public Flight(Long id, long source, long destination, String departureDate, String arrivalDate, int capacity, int cabinClass, int fare) {
         this.id = id;
         this.source = source;
         this.destination = destination;
@@ -33,11 +36,11 @@ public class Flight implements Serializable {
         this.fare = fare;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,56 +1,72 @@
-<div class="card">
-	<div class="card-header card-header-warning" >
-	  <h4 class="card-title">Passengers</h4>
-	  <p class="card-category">Please provide details of individual Passengers</p>
-	</div>
-	<div class="card-content table-responsive table-full-width">
-	  <table class="table">
-		<thead class="text-danger">
-		  <th>Seat No</th>
-		  <th>First Name</th>
-		  <th>Last Name</th>
-		  <th>Gender</th>
-		  <th>Date of Birth</th>
-		  <th>Passenger Type</th>
-		</thead>
-		<tbody>
-			<!-- populate this for n number of passengers -->
-		  <tr *ngFor="let passenger of passengers; let i = index;"> 
-			<td>
-				<div class="form-group">
-					<input type="number" [(ngModel)]="passengers[i].seatNo" name="seatNo" placeholder="Seat No" class="form-control" />
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-					<input type="text" [(ngModel)]="passengers[i].firstName" name="firstName" placeholder="First Name" class="form-control" />
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-					<input type="text" [(ngModel)]="passengers[i].lastName" name="lastName" placeholder="Last Name" class="form-control" />
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].gender" name="gender" placeholder="Gender" class="form-control" />
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-					<input type="datetime" [(ngModel)]="passengers[i].dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" class="form-control" />
-				</div>
-			</td>
-			<td>
-				<div class="form-group">
-					<input type="text" minlength="1" maxlength="1" [(ngModel)]="passengers[i].passengerType" name="passengerType" placeholder="Passenger Type" class="form-control" />
-				</div>
-			</td>
-		  </tr>
-		</tbody>
-	  </table>
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-warning">
+						<h4 class="card-title">Passengers</h4>
+						<p class="card-category">Please provide details of individual Passengers</p>
+					</div>
+					<div class="card-content table-responsive table-full-width">
+						<table class="table">
+							<thead class="text-danger">
+								<th>Seat No</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Gender</th>
+								<th>Date of Birth</th>
+								<th>Passenger Type</th>
+							</thead>
+							<tbody>
+								<!-- populate this for n number of passengers -->
+								<tr *ngFor="let passenger of passengers; let i = index;">
+									<td>
+										<div class="form-group">
+											<input type="number" [(ngModel)]="passengers[i].seatNo" name="seatNo"
+												placeholder="Seat No" class="form-control" disabled />
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="text" [(ngModel)]="passengers[i].firstName" name="firstName"
+												placeholder="First Name" class="form-control" />
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="text" [(ngModel)]="passengers[i].lastName" name="lastName"
+												placeholder="Last Name" class="form-control" />
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="text" minlength="1" maxlength="1"
+												[(ngModel)]="passengers[i].gender" name="gender" placeholder="Gender"
+												class="form-control" />
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="datetime" [(ngModel)]="passengers[i].dateOfBirth"
+												name="dateOfBirth" placeholder="Date of Birth" class="form-control" />
+										</div>
+									</td>
+									<td>
+										<div class="form-group">
+											<input type="text" minlength="1" maxlength="1"
+												[(ngModel)]="passengers[i].passengerType" name="passengerType"
+												placeholder="Passenger Type" class="form-control" />
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 
-	  <button mat-raised-button class="btn btn-primary btn-lg" (click)="savePassengers()">Continue</button>
+						<button mat-raised-button class="btn btn-primary btn-lg"
+							(click)="savePassengers()">Continue</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-  </div>
-	  
+</div>

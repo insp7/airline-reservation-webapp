@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { Flight } from 'app/flight';
 import { FlightService } from 'app/flight.service';
+import { AirportService } from 'app/airport.service';
+import { Airport } from 'app/airport'
 
 @Component({
   selector: 'app-view-flights',
@@ -12,16 +14,46 @@ import { FlightService } from 'app/flight.service';
 })
 export class ViewFlightsComponent implements OnInit {
 
-  flights: Observable<Flight[]>;
+  flights: Flight[]
+  airports: Airport[]
 
-  constructor(private flightService: FlightService, private router: Router) { }
+
+  constructor(private flightService: FlightService, private router: Router, private airportService: AirportService) { }
 
   ngOnInit(): void {
+    this.airportService.getAirports()
+      .subscribe((airports: Airport[]) => {
+        this.airports = airports
+        console.log('Airports are: ', this.airports)
+      })
     this.getFlights();
   }
 
   getFlights() {
-    this.flights = this.flightService.getFlights();
+    this.flightService.getFlights()
+      .subscribe((flights: Flight[]) => {
+        console.log(flights)
+        this.flights = flights
+      })
+    
+  }
+
+  getName(id: number) {
+    let name = 'NA';
+    this.airports.forEach(airport => {
+      if(airport.id == id)
+        name = airport.name
+    });
+    return name;
+  }
+
+  getCabinClassName(id: number) {
+    let name = 'NA'
+    if(id == 1)
+      name = 'Business'
+    else if(id == 2)
+      name = 'Economy'
+    return name;
   }
 
   deleteFlight(id: number) {   

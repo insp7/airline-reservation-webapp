@@ -36,6 +36,8 @@ import { FlightSelectComponent } from './flight-select/flight-select.component';
 import { AddPassengerDetailsComponent } from './add-passenger-details/add-passenger-details.component';
 import { SelectSeatsComponent } from './select-seats/select-seats.component';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
+import { UserReservationsComponent } from './user-reservations/user-reservations.component';
+import { FlightAddComponent } from './flight-add/flight-add.component';
 
 @NgModule({
   imports: [
@@ -66,6 +68,8 @@ import { ViewReservationsComponent } from './view-reservations/view-reservations
     AddPassengerDetailsComponent,
     SelectSeatsComponent,
     ViewReservationsComponent,
+    UserReservationsComponent,
+    FlightAddComponent,
 
   ],
   providers: [UserService],

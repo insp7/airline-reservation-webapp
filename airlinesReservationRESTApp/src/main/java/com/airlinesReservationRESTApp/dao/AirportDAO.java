@@ -19,12 +19,12 @@ public class AirportDAO {
     }
 
     public boolean saveAirport(Airport airport) {
-        if(airportRepository.existsById(airport.getId()))
-            return false;
-        else {
+//        if(airportRepository.existsById(airport.getId()))
+//            return false;
+//        else {
             airportRepository.save(airport);
             return true;
-        }
+//        }
     }
 
     public List<Airport> getAirports() {

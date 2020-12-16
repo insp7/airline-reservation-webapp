@@ -1,6 +1,8 @@
 package com.airlinesReservationRESTApp.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import javax.persistence.Table;
@@ -11,6 +13,7 @@ public class Airport implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private String city;
@@ -18,18 +21,18 @@ public class Airport implements Serializable {
 
     public Airport() { }
 
-    public Airport(long id, String name, String city, String state) {
+    public Airport(Long id, String name, String city, String state) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.state = state;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

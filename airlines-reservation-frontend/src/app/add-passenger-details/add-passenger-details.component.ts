@@ -1,10 +1,14 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Flight } from 'app/flight';
 import { FlightPreference } from 'app/flight-preference';
+import { FlightService } from 'app/flight.service';
 import { Passenger } from 'app/passenger';
 import { PassengerService } from 'app/passenger.service';
 import { Reservation } from 'app/reservation';
 import { ReservationService } from 'app/reservation.service';
+import { ResponseStatus } from 'app/response-status';
 
 @Component({
   selector: 'app-add-passenger-details',
@@ -23,7 +27,7 @@ export class AddPassengerDetailsComponent implements OnInit {
   reservation: Reservation
   reservationID: number
 
-  constructor(private passengerService: PassengerService, private reservationService: ReservationService) { }
+  constructor(private passengerService: PassengerService, private reservationService: ReservationService, private flightService: FlightService, private router: Router) { }
 
   ngOnInit(): void {
     this.bookedSeats = JSON.parse(localStorage.getItem('bookedSeats'))
@@ -34,9 +38,12 @@ export class AddPassengerDetailsComponent implements OnInit {
     // console.log(this.totalPassengers)
     console.log(this.flight)
     console.log(this.flightPreference)
+    console.log(this.bookedSeats)
     this.passengers = []
     for (let index = 0; index < this.totalPassengers; index++) {
       this.passengers[index] = new Passenger()
+      console.log(this.bookedSeats[index])
+      this.passengers[index].seatNo = this.bookedSeats[index];
     }
 
   }
@@ -68,16 +75,27 @@ export class AddPassengerDetailsComponent implements OnInit {
     this.reservation.totalFare = this.totalFare
     this.reservation.returnedAmount = 0 // set default to zero
     this.reservation.isCancelled = 0 // set default to zero 
-    this.reservation.createdAt = '2020-12-15'
+    this.reservation.createdAt = formatDate(new Date(), 'yyyy-MM-dd', 'en')
 
     // INSERT INTO RESERVATIONS
-    this.reservationService.makeReservation(this.reservation)
+    this.reservationService.makeReservation(this.reservation) // set isCancelled to 1
       .subscribe((id) => {
         this.reservationID = id
         console.log(this.reservationID)
         this.setReservationIDAndSeatNo();
         console.log('Passengers data: ', this.passengers)
-        this.passengerService.savePassengers(this.passengers)
+        this.passengerService.savePassengers(this.passengers) // insert seat nos
+
+        this.flight.capacity = this.flight.capacity - this.flightPreference.passengersCount
+        console.log(this.flight)
+         // reduce the flight capcity
+        this.flightService.updateFlight(this.flight)
+          .subscribe((status: ResponseStatus) => {
+            console.log(status)
+            this.router.navigate(['/reservations-user'])
+          }) 
+
+        // this.router.navigate(['/reservations-user'])
       })
 
       

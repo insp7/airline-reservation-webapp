@@ -23,8 +23,8 @@ public class FlightDAO {
 	}
 
 	public boolean saveFlight(Flight flight) {
-		if(flightRepository.existsById(flight.getId()))
-			return false;
+//		if(flightRepository.existsById(flight.getId()))
+//			return false;
 		flightRepository.save(flight);
 		return true;
 	}

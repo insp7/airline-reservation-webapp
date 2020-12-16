@@ -35,4 +35,9 @@ public class PassengerService {
     public void deletePassenger(Long id) {
         passengerDAO.deletePassenger(id);
     }
+
+    public Integer deletePassengerByReservationId(Long id) {
+        int deletedRows = passengerDAO.deletePassengerByReservationId(id);
+        return deletedRows;
+    }
 }

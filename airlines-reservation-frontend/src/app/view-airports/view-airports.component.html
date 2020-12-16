@@ -1,31 +1,40 @@
-<div class="card">
-	<div class="card-header card-header-warning" >
-	  <h4 class="card-title">Airports</h4>
-	  <p class="card-category">List of available airports</p>
-	</div>
-	<div class="card-content table-responsive table-full-width">
-	  <table class="table">
-		<thead class="text-danger">
-		  <th>ID</th>
-		  <th>Name</th>
-		  <th>City</th>
-		  <th>State</th>
-		  <th>Edit</th>
-		  <th>Delete</th>
-		</thead>
-		<tbody>
-		  <tr *ngFor="let airport of airports | async">
-			<td>{{ airport.id }}</td>
-			<td>{{ airport.name }}</td>
-			<td>{{ airport.city }}</td>
-			<td>{{ airport.state }}</td>
-			<td><a routerLink="/airport/edit/{{airport.id}}" mat-raised-button class="btn btn-info btn-sm">Edit</a></td>
-			<td><button mat-raised-button class="btn btn-danger btn-sm" (click)="deleteAirport(airport.id)">Delete</button></td>
-		  </tr>
-		</tbody>
-	  </table>
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header card-header-warning">
+						<h4 class="card-title">Airports</h4>
+						<p class="card-category">List of available airports</p>
+					</div>
+					<div class="card-content table-responsive table-full-width">
+						<table class="table">
+							<thead class="text-danger">
+								<th>ID</th>
+								<th>Name</th>
+								<th>City</th>
+								<th>State</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</thead>
+							<tbody>
+								<tr *ngFor="let airport of airports | async">
+									<td>{{ airport.id }}</td>
+									<td>{{ airport.name }}</td>
+									<td>{{ airport.city }}</td>
+									<td>{{ airport.state }}</td>
+									<td><a routerLink="/airport/edit/{{airport.id}}" mat-raised-button
+											class="btn btn-info btn-sm">Edit</a></td>
+									<td><button mat-raised-button class="btn btn-danger btn-sm"
+											(click)="deleteAirport(airport.id)">Delete</button></td>
+								</tr>
+							</tbody>
+						</table>
 
-	  <a routerLink="/airport/add" mat-raised-button class="btn btn-primary btn-lg">Add</a>
+						<a routerLink="/airport/add" mat-raised-button class="btn btn-primary btn-lg">Add</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-  </div>
-	  
+</div>

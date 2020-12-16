@@ -21,9 +21,13 @@ export class PassengerService {
   savePassengers(passengers: Passenger[]): void {
     this.http.post<Passenger[]>(URL + '/multiple', passengers, httpOptions)
       .subscribe(() => {
-        console.log('user is ', passengers);
+        console.log('Passenger is ', passengers);
         // this.router.navigate(['/login']);
       }, );
+  }
+
+  deletePassengerByReservationId(id: number) {
+    return this.http.delete(URL + '/reservationId/' + id)
   }
 
 }

@@ -14,12 +14,18 @@
 					</div> -->
 					<div class="col-sm-8">
 						<div class="form-group">	
-							<input type="text" [(ngModel)]="flightPreference.source" name="source" placeholder="From" class="form-control" />
+							<!-- <input type="text" [(ngModel)]="flightPreference.source" name="source" placeholder="From" class="form-control" /> -->
+							<select placeholder="Select Source" class="form-control"  [(ngModel)]="flightPreference.source" [ngModelOptions]="{standalone: true}">
+								<option *ngFor="let airport of airports" value="{{airport.id}}">{{airport.name}}</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="form-group">
-							<input type="text" [(ngModel)]="flightPreference.destination" name="destination" placeholder="To" class="form-control" />
+							<!-- <input type="text" [(ngModel)]="flightPreference.destination" name="destination" placeholder="To" class="form-control" /> -->
+							<select placeholder="Select Destination" class="form-control"  [(ngModel)]="flightPreference.destination" [ngModelOptions]="{standalone: true}">
+								<option *ngFor="let airport of airports" value="{{airport.id}}">{{airport.name}}</option>
+							</select>
 						</div>
 					</div>
 					<div class="col-sm-8">
@@ -27,11 +33,11 @@
 							<input type="date" [(ngModel)]="flightPreference.departureDate" name="departureDate" placeholder="Departure Date" class="form-control" />
 						</div>
 					</div>
-					<div class="col-sm-8">
+					<!-- <div class="col-sm-8">
 						<div class="form-group">
 							<input type="date" [(ngModel)]="flightPreference.returnDate" name="returnDate" placeholder="Return Date" class="form-control" />
 						</div>
-					</div>
+					</div> -->
 					<div class="col-sm-8">
 						<div class="form-group">
 							<input type="number" [(ngModel)]="flightPreference.passengersCount" name="passengersCount" placeholder="Passengers" class="form-control" />

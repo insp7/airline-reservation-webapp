@@ -17,9 +17,9 @@
 							<input type="password" [(ngModel)]="userDetails.password" name="password" placeholder="Password" class="form-control" />
 						</div>
 					</div>
-					<div class="col-sm-8">
+					<div *ngIf="invalidDetails" class="col-sm-8">
 						<div class="form-group">
-							<a href="/forgot-password">Forgot Password?</a>				
+							<strong>Invalid Details. Try again!</strong>
 						</div>
 					</div>
 					

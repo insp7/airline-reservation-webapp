@@ -51,4 +51,8 @@ public class ReservationDAO {
     public void deleteReservation(Long id) {
     	reservationRepository.deleteById(id);
     }
+
+    public List<Reservation> getReservationsForUser(Long id) {
+        return reservationRepository.getReservationsForUserId(id);
+    }
 }

@@ -59,4 +59,9 @@ public class PassengerController {
     public void delete(@PathVariable Long id) {
         passengerService.deletePassenger(id);
     }
+
+    @DeleteMapping(path = "/reservationId/{id}")
+    public Integer deletePassengerByReservationId(@PathVariable Long id) {
+        return passengerService.deletePassengerByReservationId(id);
+    }
 }
