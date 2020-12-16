@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlightService } from 'app/flight.service';
 import { Observable } from 'rxjs';
-// import * as $ from "jquery";
+
 @Component({
   selector: 'app-select-seats',
   templateUrl: './select-seats.component.html',
