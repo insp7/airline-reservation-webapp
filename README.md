@@ -2,7 +2,7 @@
 Airline Reservation is a web application which provides a user-friendly User Interface and an easy efficient way to search, book and cancel flight tickets. This application is currently working for a single airline company and only for domestic flights.
 
 ### Interacting Entities - Class Diagram
-![Class Diagram of Airline Reservation WebApp](documentation/diagrams/Airlines Reservation ERD White Background (for documentation).png)
+[![Class Diagram of Airline Reservation WebApp](documentation/diagrams/Airlines Reservation ERD White Background (for documentation).png)](https://github.com/insp7/airline-reservation-webapp/blob/master/documentation/diagrams/Airlines%20Reservation%20ERD%20White%20Background%20(for%20documentation).png)
 
 ### Functionalities:
 
